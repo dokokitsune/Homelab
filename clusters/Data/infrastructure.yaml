@@ -1,0 +1,13 @@
+# clusters/my-talos-cluster/infrastructure.yaml
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster-infrastructure
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./infrastructure
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
