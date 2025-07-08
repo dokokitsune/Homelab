@@ -103,8 +103,11 @@ spec:
           protocol: https
           host: 10.246.144.2
           port: 443
-          allowInsecure: true
+          allowInsecure: false
           apiKey: ""
+        customCACertificates:
+          - secret: truenas-https-tls
+            key: ca.crt
         zfs:
           datasetParentName: mnt/Bulk/k8s/nfs/v
           detachedSnapshotsDatasetParentName: mnt/Bulk/k8s/nfs/s
