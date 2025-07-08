@@ -1,29 +1,12 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: internal-root-ca
-  namespace: cert-manager
-spec:
-  isCA: true
-  commonName: my-internal-ca.local
-  secretName: root-ca-secret
-  privateKey:
-    algorithm: ECDSA
-    size: 256
-  issuerRef:
-    name: selfsigned-ca
-    kind: ClusterIssuer
-    group: cert-manager.io
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
   name: vault-server-tls
   namespace: vault
 spec:
   secretName: vault-server-tls
   issuerRef:
-    name: selfsigned-ca
+    name: internal-ca-issuer
     kind: ClusterIssuer
   commonName: "vault-internal"
   dnsNames:
@@ -46,7 +29,6 @@ spec:
   issuerRef:
     name: internal-ca-issuer
     kind: ClusterIssuer
-
   commonName: truenas.local
   dnsNames:
     - truenas.local
