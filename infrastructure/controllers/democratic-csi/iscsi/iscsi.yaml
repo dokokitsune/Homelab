@@ -101,7 +101,7 @@ spec:
           allowInsecure: false
           apiKey: ""
         customCACertificates:
-          - secret: truenas-https-tls
+          - secret: root-ca-secret
             key: ca.crt
         zfs:
           datasetParentName: mnt/Bulk/k8s/iscsi/v
