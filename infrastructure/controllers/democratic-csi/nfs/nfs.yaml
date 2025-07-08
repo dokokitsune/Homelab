@@ -108,6 +108,7 @@ spec:
           apiKey: ""
         customCACertificates:
           - secret: root-ca-secret
+            namespace: cert-manager
             key: ca.crt
         zfs:
           datasetParentName: mnt/Bulk/k8s/nfs/v
