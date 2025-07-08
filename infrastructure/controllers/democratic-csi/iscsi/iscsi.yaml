@@ -96,7 +96,7 @@ spec:
         instance_id:
         httpConnection:
           protocol: https
-          host: ${CONFIG_TRUENAS_IP}
+          host: 10.246.144.2
           port: 443
           allowInsecure: true
           # apiKey will be loaded from secret
