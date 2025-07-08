@@ -99,7 +99,7 @@ spec:
           host: 10.246.144.2
           port: 443
           allowInsecure: true
-          # apiKey will be loaded from secret
+          apiKey: ""
         zfs:
           datasetParentName: mnt/Bulk/k8s/iscsi/v
           detachedSnapshotsDatasetParentName: mnt/Bulk/k8s/iscsi/s
@@ -159,4 +159,8 @@ spec:
           limits:
             memory: 200Mi
             ephemeral-storage: 200Mi
-
+  valuesFrom:
+    - kind: Secret
+      name: truenas-api-secret
+      valuesKey: apiKey
+      targetPath: driver.config.httpConnection.apiKey
