@@ -1,7 +1,7 @@
-# ./clusters/my-cluster/self-signed-issuer.yaml
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: selfsigned-ca
+  name: internal-ca-issuer
 spec:
-  selfSigned: {}
+  ca:
+    secretName: root-ca-secret
