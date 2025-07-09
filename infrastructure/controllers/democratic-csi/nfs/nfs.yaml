@@ -55,6 +55,15 @@ spec:
             memory: 100Mi
             ephemeral-storage: 200Mi
       driver:
+        extraVolumeMounts:
+          - name: root-ca
+            mountPath: /etc/ssl/certs/custom
+            readOnly: true
+
+        extraVolumes:
+          - name: root-ca
+            secret:
+              secretName: root-ca-secret
         resources:
           requests:
             cpu: 10m
@@ -98,9 +107,7 @@ spec:
 
     driver:
       customCACertificates:
-        - secret: root-ca-secret
-          namespace: cert-manager
-          key: ca.crt
+        - path: /etc/ssl/certs/custom/ca.crt
       config:
         driver: freenas-api-nfs
         instance_id:
