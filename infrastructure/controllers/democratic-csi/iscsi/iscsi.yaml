@@ -91,6 +91,11 @@ spec:
           node-publish-secret:
           controller-expand-secret:
     driver:
+
+      customCACertificates:
+        - secret: root-ca-secret
+          namespace: cert-manager
+          key: ca.crt
       config:
         driver: freenas-api-iscsi
         instance_id:
@@ -101,10 +106,6 @@ spec:
           path: /api/v2.0
           allowInsecure: false
           apiKey: ""
-        customCACertificates:
-          - secret: root-ca-secret
-            namespace: cert-manager
-            key: ca.crt
         zfs:
           datasetParentName: mnt/Bulk/k8s/iscsi/v
           detachedSnapshotsDatasetParentName: mnt/Bulk/k8s/iscsi/s
@@ -168,4 +169,4 @@ spec:
     - kind: Secret
       name: truenas-api-secret
       valuesKey: apiKey
-      targetPath: driver.config.httpConnection.apiKey
+      targetPath: csiDriver.driver.config.httpConnection.apiKey

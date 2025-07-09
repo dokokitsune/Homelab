@@ -96,6 +96,10 @@ spec:
           node-publish-secret:
           controller-expand-secret:
     driver:
+      customCACertificates:
+        - secret: root-ca-secret
+          namespace: cert-manager
+          key: ca.crt
       config:
         driver: freenas-api-nfs
         instance_id:
@@ -106,10 +110,6 @@ spec:
           path: /api/v2.0
           allowInsecure: false
           apiKey: ""
-        customCACertificates:
-          - secret: root-ca-secret
-            namespace: cert-manager
-            key: ca.crt
         zfs:
           datasetParentName: mnt/Bulk/k8s/nfs/v
           detachedSnapshotsDatasetParentName: mnt/Bulk/k8s/nfs/s
@@ -159,4 +159,4 @@ spec:
     - kind: Secret
       name: truenas-api-secret
       valuesKey: apiKey
-      targetPath: driver.config.httpConnection.apiKey
+      targetPath: csiDriver.driver.config.httpConnection.apiKey
