@@ -73,45 +73,7 @@ spec:
           memory: 150Mi
           ephemeral-storage: 200Mi
     csiDriver:
-      name: "org.democratic-csi.iscsi"
-      driver:
-        customCACertificates:
-          - secret: root-ca-secret
-            namespace: cert-manager
-            key: ca.crt
-        config:
-          driver: freenas-api-iscsi
-          instance_id:
-          httpConnection:
-            protocol: https
-            host: 10.246.144.2
-            port: 443
-            path: /api/v2.0
-            allowInsecure: false
-            apiKey: ""
-          zfs:
-            datasetParentName: mnt/Bulk/k8s/iscsi/v
-            detachedSnapshotsDatasetParentName: mnt/Bulk/k8s/iscsi/s
-            zvolCompression:
-            zvolDedup:
-            zvolEnableReservation: false
-            zvolBlocksize:
-          iscsi:
-            targetPortal: "10.246.144.2:3260"
-            interface:
-            namePrefix: csi-
-            nameSuffix: "-clustera"
-            targetGroups:
-              - targetGroupPortalGroup: 11
-                targetGroupInitiatorGroup: 20
-                targetGroupAuthType: None
-                targetGroupAuthGroup:
-            extentInsecureTpc: true
-            extentXenCompat: false
-            extentDisablePhysicalBlocksize: true
-            extentBlocksize: 512
-            extentRpm: "SSD"
-            extentAvailThreshold: 0
+      name: "iscsi"
     storageClasses:
       - name: iscsi
         defaultClass: true
@@ -128,6 +90,44 @@ spec:
           node-stage-secret:
           node-publish-secret:
           controller-expand-secret:
+    driver:
+      customCACertificates:
+        - secret: root-ca-secret
+          namespace: cert-manager
+          key: ca.crt
+      config:
+        driver: freenas-api-iscsi
+        instance_id:
+        httpConnection:
+          protocol: https
+          host: 10.246.144.2
+          port: 443
+          path: /api/v2.0
+          allowInsecure: true
+          apiKey: ""
+        zfs:
+          datasetParentName: mnt/Bulk/k8s/iscsi/v
+          detachedSnapshotsDatasetParentName: mnt/Bulk/k8s/iscsi/s
+          zvolCompression:
+          zvolDedup:
+          zvolEnableReservation: false
+          zvolBlocksize:
+        iscsi:
+          targetPortal: "10.246.144.2:3260"
+          interface:
+          namePrefix: csi-
+          nameSuffix: "-clustera"
+          targetGroups:
+            - targetGroupPortalGroup: 11
+              targetGroupInitiatorGroup: 20
+              targetGroupAuthType: None
+              targetGroupAuthGroup:
+          extentInsecureTpc: true
+          extentXenCompat: false
+          extentDisablePhysicalBlocksize: true
+          extentBlocksize: 512
+          extentRpm: "SSD"
+          extentAvailThreshold: 0
     node:
       hostPID: true
       driver:
