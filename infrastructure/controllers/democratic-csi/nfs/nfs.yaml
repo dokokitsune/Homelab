@@ -74,6 +74,38 @@ spec:
           ephemeral-storage: 200Mi
     csiDriver:
       name: "org.democratic-csi.nfs"
+      driver:
+        customCACertificates:
+          - secret: root-ca-secret
+            namespace: cert-manager
+            key: ca.crt
+        config:
+          driver: freenas-api-nfs
+          instance_id:
+          httpConnection:
+            protocol: https
+            host: 10.246.144.2
+            port: 443
+            path: /api/v2.0
+            allowInsecure: false
+            apiKey: ""
+          zfs:
+            datasetParentName: mnt/Bulk/k8s/nfs/v
+            detachedSnapshotsDatasetParentName: mnt/Bulk/k8s/nfs/s
+            datasetEnableQuotas: true
+            datasetEnableReservation: false
+            datasetPermissionsMode: "0777"
+            datasetPermissionsUser: 0
+            datasetPermissionsGroup: 0
+          nfs:
+            shareHost: 10.246.144.2
+            shareAlldirs: false
+            shareAllowedHosts: []
+            shareAllowedNetworks: []
+            shareMaprootUser: root
+            shareMaprootGroup: root
+            shareMapallUser: ""
+            shareMapallGroup: ""
     storageClasses:
       - name: nfs
         defaultClass: false
@@ -95,38 +127,6 @@ spec:
           node-stage-secret:
           node-publish-secret:
           controller-expand-secret:
-    driver:
-      customCACertificates:
-        - secret: root-ca-secret
-          namespace: cert-manager
-          key: ca.crt
-      config:
-        driver: freenas-api-nfs
-        instance_id:
-        httpConnection:
-          protocol: https
-          host: 10.246.144.2
-          port: 443
-          path: /api/v2.0
-          allowInsecure: false
-          apiKey: ""
-        zfs:
-          datasetParentName: mnt/Bulk/k8s/nfs/v
-          detachedSnapshotsDatasetParentName: mnt/Bulk/k8s/nfs/s
-          datasetEnableQuotas: true
-          datasetEnableReservation: false
-          datasetPermissionsMode: "0777"
-          datasetPermissionsUser: 0
-          datasetPermissionsGroup: 0
-        nfs:
-          shareHost: 10.246.144.2
-          shareAlldirs: false
-          shareAllowedHosts: []
-          shareAllowedNetworks: []
-          shareMaprootUser: root
-          shareMaprootGroup: root
-          shareMapallUser: ""
-          shareMapallGroup: ""
     node:
       driver:
         resources:
