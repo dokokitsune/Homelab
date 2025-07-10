@@ -16,7 +16,6 @@ spec:
         name: democratic-csi
         namespace: flux-system
   values:
-    existingConfigSecret: truenas-api-secret
     controller:
       externalAttacher:
         resources:
@@ -101,7 +100,9 @@ spec:
           controller-expand-secret:
     driver:
       customCACertificates:
-        - path: /etc/ssl/certs/custom/ca.crt
+        - secret: root-ca-secret
+          namespace: cert-manager
+          key: ca.crt
       config:
         driver: freenas-api-iscsi
         instance_id:
