@@ -108,6 +108,11 @@ spec:
           port: 443
           allowInsecure: true
           apiKey: ""
+        sshConnection:
+          host: 10.246.144.2
+          port: 22
+          username: k8s-csi
+          privateKey: ""
         zfs:
           datasetParentName: mnt/Bulk/k8s/iscsi/v
           detachedSnapshotsDatasetParentName: mnt/Bulk/k8s/iscsi/s
@@ -172,3 +177,7 @@ spec:
       name: truenas-api-secret
       valuesKey: apiKey
       targetPath: driver.config.httpConnection.apiKey
+    - kind: Secret
+      name: truenas-ssh-secret
+      valuesKey: privateKey
+      targetPath: driver.config.sshConnection.privateKey
