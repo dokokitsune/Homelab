@@ -99,19 +99,14 @@ spec:
           node-publish-secret:
           controller-expand-secret:
     driver:
-      customCACertificates:
-        - secret: root-ca-secret
-          namespace: cert-manager
-          key: ca.crt
       config:
         driver: freenas-api-iscsi
         instance_id:
         httpConnection:
-          protocol: https
+          protocol: http
           host: 10.246.144.2
-          port: 443
-          path: /api/v2.0
-          allowInsecure: false
+          port: 80
+          allowInsecure: true
           apiKey: ""
         zfs:
           datasetParentName: mnt/Bulk/k8s/iscsi/v
