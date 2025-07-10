@@ -106,10 +106,6 @@ spec:
           controller-expand-secret:
 
     driver:
-      customCACertificates:
-        - secret: root-ca-secret
-          namespace: cert-manager
-          key: ca.crt
       config:
         driver: freenas-api-nfs
         instance_id:
@@ -117,7 +113,7 @@ spec:
           protocol: http
           host: 10.246.144.2
           port: 80
-          allowInsecure: false
+          allowInsecure: true
           apiKey: ""
         zfs:
           datasetParentName: mnt/Bulk/k8s/nfs/v
