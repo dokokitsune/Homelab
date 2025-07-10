@@ -171,4 +171,4 @@ spec:
     - kind: Secret
       name: truenas-api-secret
       valuesKey: apiKey
-      targetPath: csiDriver.driver.config.httpConnection.apiKey
+      targetPath: driver.config.httpConnection.apiKey
