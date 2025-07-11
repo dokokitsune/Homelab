@@ -159,4 +159,4 @@ spec:
     - kind: Secret
       name: truenas-ssh-secret
       valuesKey: privateKey
-      targetPath: driver.config.httpConnection.privateKey
+      targetPath: driver.config.sshConnection.privateKey
