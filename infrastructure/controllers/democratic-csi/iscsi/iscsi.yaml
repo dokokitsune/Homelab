@@ -54,15 +54,6 @@ spec:
             memory: 200Mi
             ephemeral-storage: 200Mi
       driver:
-        extraVolumeMounts:
-          - name: root-ca
-            mountPath: /etc/ssl/certs/custom
-            readOnly: true
-
-        extraVolumes:
-          - name: root-ca
-            secret:
-              secretName: root-ca-secret
         resources:
           requests:
             cpu: 20m
