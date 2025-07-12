@@ -99,6 +99,7 @@ spec:
           port: 443
           allowInsecure: true
           username: k8s-csi
+          path: /api/v2.0
           apiKey: ""
         sshConnection:
           host: 10.246.144.2
