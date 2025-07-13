@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: democratic-csi
-      version: next
+      version: 0.15
       sourceRef:
         kind: HelmRepository
         name: democratic-csi
@@ -55,6 +55,7 @@ spec:
             ephemeral-storage: 200Mi
       driver:
         image:
+          registry: docker.io/democraticcsi/democratic-csi
           tag: next
         resources:
           requests:
@@ -94,10 +95,6 @@ spec:
           controller-expand-secret:
 
     driver:
-      enabled: true
-      # Using Next tag until compatibility patch is realeased
-      image:
-        tag: next
       config:
         driver: freenas-api-nfs
         instance_id:

@@ -55,6 +55,7 @@ spec:
             ephemeral-storage: 200Mi
       driver:
         image:
+          registry: docker.io/democraticcsi/democratic-csi
           tag: next
         resources:
           requests:
@@ -92,10 +93,6 @@ spec:
           node-publish-secret:
           controller-expand-secret:
     driver:
-      enabled: true
-      # Using Next tag until compatibility patch is realeased
-      image:
-        tag: next
       config:
         driver: freenas-api-iscsi
         instance_id:
