@@ -54,7 +54,8 @@ spec:
             memory: 200Mi
             ephemeral-storage: 200Mi
       driver:
-        tag: next
+        image:
+          tag: next
         resources:
           requests:
             cpu: 20m
