@@ -54,6 +54,7 @@ spec:
             memory: 100Mi
             ephemeral-storage: 200Mi
       driver:
+        tag: next
         resources:
           requests:
             cpu: 10m
@@ -95,7 +96,6 @@ spec:
       enabled: true
       # Using Next tag until compatibility patch is realeased
       image:
-        registry: docker.io/democraticcsi/democratic-csi
         tag: next
       config:
         driver: freenas-api-nfs
