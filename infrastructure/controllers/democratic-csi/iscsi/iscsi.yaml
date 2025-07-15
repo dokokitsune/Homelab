@@ -93,6 +93,8 @@ spec:
           node-publish-secret:
           controller-expand-secret:
     driver:
+      image:
+        tag: next
       config:
         driver: freenas-api-iscsi
         instance_id:
@@ -102,7 +104,6 @@ spec:
           port: 443
           allowInsecure: true
           apiVersion: 2
-          path: /api/v2.0
           apiKey: ""
         zfs:
           datasetParentName: mnt/Bulk/k8s/iscsi/v

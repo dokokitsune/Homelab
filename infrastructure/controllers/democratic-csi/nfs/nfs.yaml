@@ -95,6 +95,8 @@ spec:
           controller-expand-secret:
 
     driver:
+      image:
+        tag: next
       config:
         driver: freenas-api-nfs
         instance_id:
@@ -102,7 +104,6 @@ spec:
           protocol: https
           host: 10.246.144.2
           port: 443
-          path: /api/v2.0
           apiVersion: 2
           allowInsecure: true
           apiKey: ""
