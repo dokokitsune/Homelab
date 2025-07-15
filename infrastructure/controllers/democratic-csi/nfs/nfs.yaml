@@ -56,7 +56,7 @@ spec:
       driver:
         image:
           registry: docker.io/democraticcsi/democratic-csi
-          tag: 1.9.4
+          tag: next
         resources:
           requests:
             cpu: 10m
