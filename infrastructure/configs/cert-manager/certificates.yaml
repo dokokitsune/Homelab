@@ -9,10 +9,20 @@ spec:
     name: internal-ca-issuer
     kind: ClusterIssuer
   commonName: "vault-internal"
+  duration: 8760h
+  renewBefore: 720h
   dnsNames:
     - "vault-0.vault-internal"
     - "vault-1.vault-internal"
     - "vault-2.vault-internal"
     - "vault.vault.svc.cluster.local"
+    - "vault-active.vault.svc.cluster.local"
+    - "vault-standby.vault.svc.cluster.local"
+    - "vault-internal.vault.svc.cluster.local"
     - "vault-internal"
     - "localhost"
+  ipAddresses:
+    - "127.0.0.1"
+  subject:
+    organizationalUnits:
+      - "Vault"

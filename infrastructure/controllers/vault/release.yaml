@@ -7,8 +7,8 @@ spec:
   interval: 30m
   chart:
     spec:
-      chart: cert-manager
-      version: 0.3*
+      chart: vault
+      version: 0.30.0
       sourceRef:
         kind: HelmRepository
         name: hashicorp
@@ -16,14 +16,12 @@ spec:
       interval: 12h
   values:
     global:
-      enabled: true
-      tlsDiable: false
-
+      tlsDisable: false
     injector:
       enabled: true
       image:
-        repository: "hashicorp/vault"
-        tag: "latest"
+        repository: "hashicorp/vault-k8s"
+        tag: "v1.7.0"
 
 
       resources:
@@ -35,7 +33,14 @@ spec:
           cpu: "250m"
 
     server:
-
+      extraVolumes:
+        - type: secret
+          name: vault-server-tls
+      extraVolumeMounts:
+        - mountPath: /vault/tls
+          name: vault-server-tls
+      podDisruptionBudget:
+        maxUnavailable: 1
       resources:
         requests:
           memory: "512Mi"
@@ -54,6 +59,8 @@ spec:
 
       auditStorage:
         enabled: true
+        size: 5Gi
+        storageClassName: "truenas-nfs-csi"
 
         standalone:
           enabled: false
@@ -65,32 +72,36 @@ spec:
         - envName: AWS_SECRET_ACCESS_KEY_ID
           secretName: vault-aws-creds
           secretValue: AWS_SECRET_ACCESS_KEY_ID
+      dataStorage:
+        enabled: true
+        size: 10Gi
+        mountPath: "/vault/data"
+        storageClassName: "truenas-nfs-csi"
+        accessMode: ReadWriteOnce
 
       ha:
         enabled: true
         replicas: 3
         raft:
           enabled: true
-          setNodeId: false
           config: |
             ui = true
             listener "tcp" {
               address = "[::]:8200"
               cluster_address = "[::]8201"
+              tls_cert_file = "/vault/tls/tls.crt"
+              tls_key_file = "/vault/tls/tls.key"
             }
-
             seal "awskms" {
               region = "us-west-2"
-              kms_key_id = ""
+              kms_key_id = "765bd6ab-accb-421f-9ace-b31771c2887e"
             }
-
-            storage "raft" {}
-
+            storage "raft" {
+              path = "/vault/data"
+            }
             service_registration "kubernetes" {}
-            |
-      tls:
-        enabled: true
-        secretName: vault-server-tls
     ui:
       enabled: true
-      serviceType: "ClusterIP"
+      service:
+        type: ClusterIP
+        servicePort: 8200
