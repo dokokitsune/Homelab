@@ -102,7 +102,7 @@ spec:
           protocol: https
           host: 10.246.144.2
           port: 443
-          apiVersion: 2
+          path: /api/v2.0
           allowInsecure: true
           apiKey: ""
         zfs:
