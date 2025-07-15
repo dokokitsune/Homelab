@@ -101,7 +101,7 @@ spec:
           host: 10.246.144.2
           port: 443
           allowInsecure: true
-          path: /api/v2.0
+          apiVersion: 2
           apiKey: ""
         zfs:
           datasetParentName: mnt/Bulk/k8s/iscsi/v
