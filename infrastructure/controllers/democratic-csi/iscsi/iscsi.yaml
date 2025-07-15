@@ -76,6 +76,7 @@ spec:
           ephemeral-storage: 200Mi
     csiDriver:
       name: "org.democratic-csi.iscsi"
+      storageCapacity: true
     storageClasses:
       - name: iscsi
         defaultClass: true
@@ -103,7 +104,7 @@ spec:
           host: 10.246.144.2
           port: 443
           allowInsecure: true
-          apiVersion: 2
+          path: /api/v2.0
           apiKey: ""
         zfs:
           datasetParentName: mnt/Bulk/k8s/iscsi/v
