@@ -76,7 +76,6 @@ spec:
           ephemeral-storage: 200Mi
     csiDriver:
       name: "org.democratic-csi.iscsi"
-      storageCapacity: true
     storageClasses:
       - name: iscsi
         defaultClass: true
@@ -94,8 +93,6 @@ spec:
           node-publish-secret:
           controller-expand-secret:
     driver:
-      image:
-        tag: next
       config:
         driver: freenas-api-iscsi
         instance_id:

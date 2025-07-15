@@ -76,7 +76,6 @@ spec:
           ephemeral-storage: 200Mi
     csiDriver:
       name: "org.democratic-csi.nfs"
-      storageCapacity: true
     storageClasses:
       - name: nfs
         defaultClass: false
@@ -96,8 +95,6 @@ spec:
           controller-expand-secret:
 
     driver:
-      image:
-        tag: next
       config:
         driver: freenas-api-nfs
         instance_id:
@@ -106,7 +103,6 @@ spec:
           host: 10.246.144.2
           port: 443
           path: /api/v2.0
-
           allowInsecure: true
           apiKey: ""
         zfs:

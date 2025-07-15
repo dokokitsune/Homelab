@@ -4,4 +4,4 @@ resources:
   - ./cilium
   - ./cert-manager
   - ./democratic-csi
-  - ./vault
+#  - ./vault
