@@ -23,7 +23,6 @@ spec:
         repository: "hashicorp/vault-k8s"
         tag: "1.7.0"
 
-
       resources:
         requests:
           memory: "256Mi"
@@ -60,7 +59,7 @@ spec:
       auditStorage:
         enabled: true
         size: 5Gi
-        storageClassName: "truenas-nfs-csi"
+        storageClassName: "nfs"
 
         standalone:
           enabled: false
@@ -76,7 +75,7 @@ spec:
         enabled: true
         size: 10Gi
         mountPath: "/vault/data"
-        storageClassName: "truenas-nfs-csi"
+        storageClassName: "nfs"
         accessMode: ReadWriteOnce
 
       ha:
