@@ -104,8 +104,8 @@ spec:
           path: /api/v2.0
           apiKey: ""
         zfs:
-          datasetParentName: mnt/Bulk/k8s/iscsi/v
-          detachedSnapshotsDatasetParentName: mnt/Bulk/k8s/iscsi/s
+          datasetParentName: Bulk/k8s/iscsi/v
+          detachedSnapshotsDatasetParentName: Bulk/k8s/iscsi/s
           zvolCompression:
           zvolDedup:
           zvolEnableReservation: false

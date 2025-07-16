@@ -105,8 +105,8 @@ spec:
           allowInsecure: true
           apiKey: ""
         zfs:
-          datasetParentName: mnt/Bulk/k8s/nfs/v
-          detachedSnapshotsDatasetParentName: mnt/Bulk/k8s/nfs/s
+          datasetParentName: Bulk/k8s/nfs/v
+          detachedSnapshotsDatasetParentName: Bulk/k8s/nfs/s
           datasetEnableQuotas: true
           datasetEnableReservation: false
           datasetPermissionsMode: "0777"
