@@ -116,8 +116,8 @@ spec:
           namePrefix: csi-
           nameSuffix: "-clustera"
           targetGroups:
-            - targetGroupPortalGroup: 11
-              targetGroupInitiatorGroup: 20
+            - targetGroupPortalGroup: 1
+              targetGroupInitiatorGroup: 5
               targetGroupAuthType: None
               targetGroupAuthGroup:
           extentInsecureTpc: true
@@ -129,8 +129,6 @@ spec:
     node:
       hostPID: true
       driver:
-        image:
-          tag: next
         resources:
           requests:
             cpu: 30m

@@ -84,9 +84,8 @@ spec:
         allowVolumeExpansion: true
         parameters:
           fsType: nfs
-          detachedVolumesFromSnapshots: "false"
         mountOptions:
-          ["nfsvers=4.2", "nconnect=8", "hard", "noatime", "nodiratime"]
+          ["nfsvers=4", "noatime"]
         secrets:
           provisioner-secret:
           controller-publish-secret:
@@ -114,6 +113,7 @@ spec:
           datasetPermissionsUser: 0
           datasetPermissionsGroup: 0
         nfs:
+          shareCommentTemplate: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
           shareHost: 10.246.144.2
           shareAlldirs: false
           shareAllowedHosts: []
