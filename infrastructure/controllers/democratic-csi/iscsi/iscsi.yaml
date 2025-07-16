@@ -129,6 +129,8 @@ spec:
     node:
       hostPID: true
       driver:
+        image:
+          tag: next
         resources:
           requests:
             cpu: 30m
