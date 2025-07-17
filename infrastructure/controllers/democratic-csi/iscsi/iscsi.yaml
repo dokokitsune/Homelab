@@ -52,6 +52,10 @@ spec:
           limits:
             memory: 200Mi
             ephemeral-storage: 200Mi
+      volumeSnapshotClasses:
+        - name: iscsi
+          parameters:
+            detachedSnapshots: "true"
       driver:
         image:
           registry: docker.io/democraticcsi/democratic-csi
@@ -83,6 +87,7 @@ spec:
             zvolBlocksize:
           iscsi:
             targetPortal: "10.246.144.2:3260"
+            targetPortals: []
             interface:
             namePrefix: csi-
             nameSuffix: "-clustera"

@@ -54,6 +54,10 @@ spec:
             memory: 100Mi
             ephemeral-storage: 200Mi
 
+      volumeSnapshotClasses:
+        - name: nfs
+          parameters:
+            detachedSnapshots: "true"
       driver:
         image:
           registry: docker.io/democraticcsi/democratic-csi
@@ -83,18 +87,17 @@ spec:
             datasetEnableQuotas: true
             datasetEnableReservation: false
             datasetPermissionsMode: "0777"
-            datasetPermissionsUser:
-            datasetPermissionsGroup:
+            datasetPermissionsUser: 0
+            datasetPermissionsGroup: 0
           nfs:
-            shareCommentTemplate: "{{ parameters.[csi.storage.k8s.io/pvc/namespace] }}-{{ parameters.[csi.storage.k8s.io/pvc/name] }}"
             shareHost: 10.246.144.2
             shareAlldirs: false
             shareAllowedHosts: []
             shareAllowedNetworks: []
             shareMaprootUser: k8s-csi
             shareMaprootGroup: k8s-csi
-            shareMapallUser:
-            shareMapallGroup:
+            shareMapallUser: ""
+            shareMapallGroup: ""
 
     csiProxy:
       resources:
