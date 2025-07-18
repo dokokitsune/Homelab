@@ -59,7 +59,7 @@ spec:
       auditStorage:
         enabled: true
         size: 5Gi
-        storageClassName: "nfs"
+        storageClassName: "iscsi"
 
         standalone:
           enabled: false
@@ -75,7 +75,7 @@ spec:
         enabled: true
         size: 10Gi
         mountPath: "/vault/data"
-        storageClassName: "nfs"
+        storageClassName: "iscsi"
         accessMode: ReadWriteOnce
 
       ha:
