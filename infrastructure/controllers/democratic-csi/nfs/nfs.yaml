@@ -1,3 +1,4 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -14,14 +15,13 @@ spec:
         kind: HelmRepository
         name: democratic-csi
         namespace: flux-system
-
   values:
     controller:
       externalAttacher:
         resources:
           requests:
             cpu: 10m
-            memory: 50Mi
+            memory: 50M
             ephemeral-storage: 100Mi
           limits:
             memory: 100Mi
@@ -30,10 +30,10 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 50Mi
+            memory: 50M
             ephemeral-storage: 100Mi
           limits:
-            memory: 100Mi
+            memory: 100M
             ephemeral-storage: 200Mi
       externalResizer:
         resources:
@@ -53,11 +53,6 @@ spec:
           limits:
             memory: 100Mi
             ephemeral-storage: 200Mi
-
-      volumeSnapshotClasses:
-        - name: nfs
-          parameters:
-            detachedSnapshots: "true"
       driver:
         image:
           registry: docker.io/democraticcsi/democratic-csi
@@ -70,35 +65,6 @@ spec:
           limits:
             memory: 100Mi
             ephemeral-storage: 200Mi
-
-        config:
-          driver: freenas-api-nfs
-          instance_id:
-          httpConnection:
-            protocol: https
-            host: 10.246.144.2
-            port: 443
-            path: /api/v2.0
-            allowInsecure: true
-            apiKey: ""
-          zfs:
-            datasetParentName: Bulk/k8s/nfs/v
-            detachedSnapshotsDatasetParentName: Bulk/k8s/nfs/s
-            datasetEnableQuotas: true
-            datasetEnableReservation: false
-            datasetPermissionsMode: "0777"
-            datasetPermissionsUser: 3000
-            datasetPermissionsGroup: 3000
-          nfs:
-            shareHost: 10.246.144.2
-            shareAlldirs: false
-            shareAllowedHosts: []
-            shareAllowedNetworks: []
-            shareMaprootUser: k8s-csi
-            shareMaprootGroup: k8s-csi
-            shareMapallUser: ""
-            shareMapallGroup: ""
-
     csiProxy:
       resources:
         requests:
@@ -108,10 +74,8 @@ spec:
         limits:
           memory: 100Mi
           ephemeral-storage: 200Mi
-
     csiDriver:
       name: "org.democratic-csi.nfs"
-
     storageClasses:
       - name: nfs
         defaultClass: false
@@ -120,9 +84,7 @@ spec:
         allowVolumeExpansion: true
         parameters:
           fsType: nfs
-        mountOptions:
-          - nfsvers=4
-          - noatime
+        mountOptions: ["nfsvers=4", "noatime"]
         secrets:
           provisioner-secret:
           controller-publish-secret:
@@ -130,6 +92,34 @@ spec:
           node-publish-secret:
           controller-expand-secret:
 
+    driver:
+      config:
+        driver: freenas-api-nfs
+        instance_id:
+        httpConnection:
+          protocol: https
+          host: 10.246.144.2
+          port: 443
+          path: /api/v2.0
+          allowInsecure: true
+          apiKey: ""
+        zfs:
+          datasetParentName: Bulk/k8s/nfs/v
+          detachedSnapshotsDatasetParentName: Bulk/k8s/nfs/s
+          datasetEnableQuotas: true
+          datasetEnableReservation: false
+          datasetPermissionsMode: "0777"
+          datasetPermissionsUser: 3000
+          datasetPermissionsGroup: 3000
+        nfs:
+          shareHost: 10.246.144.2
+          shareAlldirs: false
+          shareAllowedHosts: []
+          shareAllowedNetworks: []
+          shareMaprootUser: k8s-csi
+          shareMaprootGroup: k8s-csi
+          shareMapallUser:
+          shareMapallGroup:
     node:
       driver:
         image:
@@ -160,9 +150,8 @@ spec:
           limits:
             memory: 200Mi
             ephemeral-storage: 200Mi
-
   valuesFrom:
     - kind: Secret
       name: truenas-api-secret
       valuesKey: apiKey
-      targetPath: controller.driver.config.httpConnection.apiKey
+      targetPath: driver.config.httpConnection.apiKey

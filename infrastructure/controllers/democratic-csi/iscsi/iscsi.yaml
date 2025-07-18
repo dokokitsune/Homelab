@@ -1,3 +1,4 @@
+---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -52,10 +53,6 @@ spec:
           limits:
             memory: 200Mi
             ephemeral-storage: 200Mi
-      volumeSnapshotClasses:
-        - name: iscsi
-          parameters:
-            detachedSnapshots: "true"
       driver:
         image:
           registry: docker.io/democraticcsi/democratic-csi
@@ -68,41 +65,6 @@ spec:
           limits:
             memory: 200Mi
             ephemeral-storage: 200Mi
-        config:
-          driver: freenas-api-iscsi
-          instance_id: ""
-          httpConnection:
-            protocol: https
-            host: 10.246.144.2
-            port: 443
-            allowInsecure: true
-            path: /api/v2.0
-            apiKey: ""
-          zfs:
-            datasetParentName: Bulk/k8s/iscsi/v
-            detachedSnapshotsDatasetParentName: Bulk/k8s/iscsi/s
-            zvolCompression:
-            zvolDedup:
-            zvolEnableReservation: false
-            zvolBlocksize:
-          iscsi:
-            targetPortal: "10.246.144.2:3260"
-            targetPortals: []
-            interface:
-            namePrefix: csi-
-            nameSuffix: "-cluster"
-            targetGroups:
-              - targetGroupPortalGroup: 1
-                targetGroupInitiatorGroup: 1
-                targetGroupAuthType: None
-                targetGroupAuthGroup:
-            extentInsecureTpc: true
-            extentXenCompat: false
-            extentDisablePhysicalBlocksize: true
-            extentBlocksize: 512
-            extentRpm: "SSD"
-            extentAvailThreshold: 0
-
     csiProxy:
       resources:
         requests:
@@ -112,10 +74,8 @@ spec:
         limits:
           memory: 150Mi
           ephemeral-storage: 200Mi
-
     csiDriver:
       name: "org.democratic-csi.iscsi"
-
     storageClasses:
       - name: iscsi
         defaultClass: true
@@ -132,7 +92,40 @@ spec:
           node-stage-secret:
           node-publish-secret:
           controller-expand-secret:
-
+    driver:
+      config:
+        driver: freenas-api-iscsi
+        instance_id:
+        httpConnection:
+          protocol: https
+          host: 10.246.144.2
+          port: 443
+          allowInsecure: true
+          path: /api/v2.0
+          apiKey: ""
+        zfs:
+          datasetParentName: Bulk/k8s/iscsi/v
+          detachedSnapshotsDatasetParentName: Bulk/k8s/iscsi/s
+          zvolCompression:
+          zvolDedup:
+          zvolEnableReservation: false
+          zvolBlocksize:
+        iscsi:
+          targetPortal: "10.246.144.2:3260"
+          interface:
+          namePrefix: csi-
+          nameSuffix: "-cluster"
+          targetGroups:
+            - targetGroupPortalGroup: 1
+              targetGroupInitiatorGroup: 1
+              targetGroupAuthType: None
+              targetGroupAuthGroup:
+          extentInsecureTpc: true
+          extentXenCompat: false
+          extentDisablePhysicalBlocksize: true
+          extentBlocksize: 512
+          extentRpm: "SSD"
+          extentAvailThreshold: 0
     node:
       hostPID: true
       driver:
@@ -169,9 +162,8 @@ spec:
           limits:
             memory: 200Mi
             ephemeral-storage: 200Mi
-
   valuesFrom:
     - kind: Secret
       name: truenas-api-secret
       valuesKey: apiKey
-      targetPath: controller.driver.config.httpConnection.apiKey
+      targetPath: driver.config.httpConnection.apiKey
