@@ -90,7 +90,7 @@ spec:
             targetPortals: []
             interface:
             namePrefix: csi-
-            nameSuffix: "-clustera"
+            nameSuffix: "-cluster"
             targetGroups:
               - targetGroupPortalGroup: 1
                 targetGroupInitiatorGroup: 1

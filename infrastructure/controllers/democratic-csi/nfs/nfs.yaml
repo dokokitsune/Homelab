@@ -87,8 +87,8 @@ spec:
             datasetEnableQuotas: true
             datasetEnableReservation: false
             datasetPermissionsMode: "0777"
-            datasetPermissionsUser: 0
-            datasetPermissionsGroup: 0
+            datasetPermissionsUser: 3000
+            datasetPermissionsGroup: 3000
           nfs:
             shareHost: 10.246.144.2
             shareAlldirs: false
