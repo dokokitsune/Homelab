@@ -80,7 +80,7 @@ spec:
 
       ha:
         enabled: true
-        replicas: 0
+        replicas: 3
         raft:
           enabled: true
           config: |
