@@ -108,6 +108,7 @@ spec:
           port: 443
           allowInsecure: true
           apiVersion: 2
+          path: "/api/v2.0"
           apiKey: ""
         zfs:
           datasetParentName: Bulk/k8s/iscsi/v
