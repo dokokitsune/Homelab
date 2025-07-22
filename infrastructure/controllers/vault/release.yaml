@@ -33,11 +33,14 @@ spec:
 
     server:
       extraVolumes:
-        - type: secret
-          name: vault-server-tls
+        - name: vault-server-tls
+          secret:
+            secretName: vault-server-tls
+
       extraVolumeMounts:
-        - mountPath: /vault/tls
-          name: vault-server-tls
+        - name: vault-server-tls
+          mountPath: /vault/tls
+          readOnly: true
       podDisruptionBudget:
         maxUnavailable: 1
       resources:
