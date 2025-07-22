@@ -1,31 +1,33 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: selfsigned-ca-creator
+  name: letsencrypt-staging
 spec:
-  selfSigned: {}
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: internal-root-ca
-  namespace: cert-manager
-spec:
-  isCA: true
-  commonName: my-internal-ca.local
-  secretName: root-ca-secret
-  privateKey:
-    algorithm: ECDSA
-    size: 256
-  issuerRef:
-    name: selfsigned-ca-creator
-    kind: ClusterIssuer
-    group: cert-manager.io
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: wwood@wwoodhomelab.com
+    privateKeySecretRef:
+      name: letsencrypt-staging
+    solvers:
+      - dns01:
+          cloudflare:
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: api-token
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: internal-ca-issuer
+  name: letsencrypt-production
 spec:
-  ca:
-    secretName: root-ca-secret
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: wwood@wwoodhomelab.com
+    privateKeySecretRef:
+      name: letsencrypt-production
+    solvers:
+      - dns01:
+          cloudflare:
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: api-token
