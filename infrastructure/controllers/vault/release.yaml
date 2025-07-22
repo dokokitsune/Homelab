@@ -40,11 +40,6 @@ spec:
           name: vault-server-tls
       podDisruptionBudget:
         maxUnavailable: 1
-      statefulSet:
-        securityContext:
-          runAsUser: 100
-          runAsGroup: 1000
-          fsGroup: 1000
       resources:
         requests:
           memory: "512Mi"
@@ -69,7 +64,7 @@ spec:
         standalone:
           enabled: false
 
-      extraSecretEnviromentVars:
+      extraSecretEnvironmentVars:
         - envName: AWS_ACCESS_KEY_ID
           secretName: vault-aws-creds
           secretValue: AWS_ACCESS_KEY_ID
