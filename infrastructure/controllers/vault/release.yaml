@@ -66,11 +66,15 @@ spec:
 
       extraSecretEnvironmentVars:
         - envName: AWS_ACCESS_KEY_ID
-          secretName: vault-aws-creds
-          secretValue: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: vault-aws-creds
+              key: AWS_ACCESS_KEY_ID
         - envName: AWS_SECRET_ACCESS_KEY
-          secretName: vault-aws-creds
-          secretValue: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: vault-aws-creds
+              key: AWS_SECRET_ACCESS_KEY
       dataStorage:
         enabled: true
         size: 10Gi
