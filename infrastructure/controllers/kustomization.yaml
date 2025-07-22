@@ -4,5 +4,4 @@ resources:
   - ./cilium
   - ./cert-manager
   - ./democratic-csi
-# Disabling Vault until TrueNAS update
-#  - ./vault
+  - ./vault
