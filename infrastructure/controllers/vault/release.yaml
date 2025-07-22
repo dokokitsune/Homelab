@@ -32,12 +32,12 @@ spec:
           cpu: "250m"
 
     server:
-      extraVolumes:
+      volumes:
         - name: vault-server-tls
           secret:
             secretName: vault-server-tls
 
-      extraVolumeMounts:
+      volumeMounts:
         - name: vault-server-tls
           mountPath: /vault/tls
           readOnly: true
