@@ -122,6 +122,4 @@ spec:
             service_registration "kubernetes" {}
     ui:
       enabled: true
-      service:
-        type: LoadBalancer
-        servicePort: 8200
+      serviceType: LoadBalancer
