@@ -123,5 +123,5 @@ spec:
     ui:
       enabled: true
       service:
-        type: ClusterIP
+        type: LoadBalencer
         servicePort: 8200
