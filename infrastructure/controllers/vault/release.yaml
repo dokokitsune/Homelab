@@ -123,5 +123,5 @@ spec:
     ui:
       enabled: true
       service:
-        type: LoadBalencer
+        type: LoadBalancer
         servicePort: 8200
