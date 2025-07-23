@@ -4,6 +4,12 @@ ipam:
 
 kubeProxyReplacement: true
 
+enable-l2-announcements: true
+kube-proxy-replacement: true
+k8s-client-qps: 15
+k8s-client-burst: 20
+
+
 securityContext:
   capabilities:
     ciliumAgent:
