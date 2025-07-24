@@ -6,7 +6,7 @@ metadata:
 spec:
   serviceSelector:
     matchLabels:
-      cilium-lb-pool: vault-pool
+      app.kubernetes.io/name: vault-ui
 
   # IMPORTANT: if externalIPss is desired, externalIPs.enabled=true must be set in values.yaml
   # externalIPs: true

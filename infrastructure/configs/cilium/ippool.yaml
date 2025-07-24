@@ -8,4 +8,4 @@ spec:
     - cidr: "10.246.100.160/27"
   serviceSelector:
     matchLabels:
-      cilium-lb-pool: vault-pool
+      app.kubernetes.io/name: vault-ui
