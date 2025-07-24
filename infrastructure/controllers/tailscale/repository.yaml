@@ -14,10 +14,6 @@ spec:
         name: tailscale
         namespace: flux-system
       interval: 12h
-  values:
-    oauth:
-      clientId: ""
-      clientSecret: ""
   valuesFrom:
     - kind: Secret
       name: tailscale-clientid-secret
