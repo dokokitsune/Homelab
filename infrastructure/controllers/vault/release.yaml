@@ -123,3 +123,5 @@ spec:
     ui:
       enabled: true
       serviceType: "LoadBalancer"
+      annotations:
+        cilium-lb-pool: vault-pool
