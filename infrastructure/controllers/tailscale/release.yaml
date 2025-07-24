@@ -1,8 +1,8 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
-  name: tailscale
+  name: tailscale-operator
   namespace: flux-system
 spec:
   interval: 1h
-  url: https://helm-charts.sinextra.dev
+  url: https://pkgs.tailscale.com/helmcharts
