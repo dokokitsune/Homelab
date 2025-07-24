@@ -1,0 +1,11 @@
+apiVersion: "cilium.io/v2alpha1"
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: vault-pool
+  namespace: kube-system
+spec:
+  blocks:
+    - cidr: "10.246.100.160/27"
+  serviceSelector:
+    matchLabels:
+      cilium-lb-pool: vault-pool
