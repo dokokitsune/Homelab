@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: tailscale
+  name: tailscale-operator
   namespace: tailscale
 spec:
   interval: 30m
