@@ -124,6 +124,5 @@ spec:
       enabled: true
       serviceType: "LoadBalancer"
       annotations:
-        cilium-lb-pool: vault-pool
         tailscale.com/expose: "true"
         tailscale.com/hostname: "vault-ui"
