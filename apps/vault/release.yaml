@@ -123,6 +123,7 @@ spec:
     ui:
       enabled: true
       serviceType: "LoadBalancer"
+      loadBalancerClass: "tailscale"
       annotations:
         tailscale.com/expose: "true"
         tailscale.com/hostname: "vault-ui"
