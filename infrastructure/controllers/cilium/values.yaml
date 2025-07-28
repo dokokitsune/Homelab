@@ -1,7 +1,6 @@
 ipam:
   mode: kubernetes
 
-
 kubeProxyReplacement: true
 
 enable-l2-announcements: true
@@ -9,6 +8,8 @@ kube-proxy-replacement: true
 k8s-client-qps: 15
 k8s-client-burst: 20
 
+socketLB:
+  hostNamespaceOnly: true
 
 securityContext:
   capabilities:
