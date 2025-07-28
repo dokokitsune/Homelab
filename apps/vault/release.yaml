@@ -120,21 +120,3 @@ spec:
               }
             }
             service_registration "kubernetes" {}
-    ui:
-      enabled: true
-      serviceType: "LoadBalancer"
-      loadBalancerClass: "tailscale"
-      annotations:
-        tailscale.com/expose: "true"
-        tailscale.com/hostname: "vault-ui"
-  postRenderers:
-    - kustomize:
-        patches:
-          - target:
-              group: ""
-              version: v1
-              kind: Service
-              name: vault-ui
-            patch: |
-              spec:
-                loadBalancerClassName: tailscale

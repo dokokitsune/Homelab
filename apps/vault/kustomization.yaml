@@ -6,3 +6,4 @@ metadata:
 resources:
   - ./repository.yaml
   - ./release.yaml
+  - ./vault-ui.yaml

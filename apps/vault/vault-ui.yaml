@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vault-ui
+  namespace: vault
+spec:
+  type: LoadBalancer
+  loadBalancerClass: tailscale
+  selector:
+    app.kubernetes.io/instance: vault
+    component: server
+  ports:
+    - name: https
+      port: 8200
+      targetPort: 8200
