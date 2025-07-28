@@ -93,6 +93,8 @@ spec:
               cluster_address = "[0.0.0.0]:8201"
               tls_cert_file = "/vault/tls/tls.crt"
               tls_key_file = "/vault/tls/tls.key"
+            api_addr = "https://vault-active:8200"
+            cluster_addr = "https://vault-active:8201"
             }
             seal "awskms" {
               region = "us-west-2"
