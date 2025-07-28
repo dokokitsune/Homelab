@@ -17,3 +17,4 @@ spec:
     - name: https
       port: 8200
       targetPort: 8200
+      protocal: TCP
