@@ -127,3 +127,12 @@ spec:
       annotations:
         tailscale.com/expose: "true"
         tailscale.com/hostname: "vault-ui"
+  patches:
+    - target:
+        group: ""            # core/v1
+        version: v1
+        kind: Service
+        name: vault-ui
+      patch: |
+        spec:
+          loadBalancerClassName: tailscale
