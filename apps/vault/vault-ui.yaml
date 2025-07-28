@@ -5,6 +5,7 @@ metadata:
   namespace: vault
   annotations:
     tailscale.com/expose: "true"
+    tailscale.com/hostname: vault-ui
   labels:
     app.kubernetes.io/instance: vault
     app.kubernetes.io/name: vault-ui
