@@ -5,3 +5,4 @@ resources:
   - ./cert-manager
   - ./democratic-csi
   - ./tailscale
+  - ./vault
