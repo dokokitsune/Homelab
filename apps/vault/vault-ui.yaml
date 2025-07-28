@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: vault-ui
   namespace: vault
+  labels:
+    app.kubernetes.io/instance=vault
+    app.kubernetes.io/name=vault-ui
   annotations:
     tailscale.com/expose: "true"
     tailscale.com/hostname: vault-ui
@@ -10,6 +13,7 @@ spec:
   type: LoadBalancer
   loadBalancerClass: tailscale
   selector:
+    app.kubernetes.io/name: vault
     app.kubernetes.io/instance: vault
     component: server
   ports:
