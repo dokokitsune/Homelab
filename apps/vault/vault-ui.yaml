@@ -4,8 +4,8 @@ metadata:
   name: vault-ui
   namespace: vault
   labels:
-    app.kubernetes.io/instance=vault
-    app.kubernetes.io/name=vault-ui
+    app.kubernetes.io/instance: vault
+    app.kubernetes.io/name: vault-ui
   annotations:
     tailscale.com/expose: "true"
     tailscale.com/hostname: vault-ui
