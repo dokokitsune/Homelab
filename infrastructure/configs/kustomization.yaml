@@ -3,4 +3,4 @@ kind: Kustomization
 resources:
   - ./namepaces.yaml
   - ./cert-manager
-  - ./cilium
+#  - ./cilium
