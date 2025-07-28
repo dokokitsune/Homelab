@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: vault-ui
   namespace: vault
+  annotations:
+    tailscale.com/expose: "true"
   labels:
     app.kubernetes.io/instance: vault
     app.kubernetes.io/name: vault-ui
