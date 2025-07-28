@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: vault-ui
   namespace: vault
+  annotations:
+    tailscale.com/expose: "true"
+    tailscale.com/hostname: vault-ui
 spec:
   type: LoadBalancer
   loadBalancerClass: tailscale
