@@ -4,6 +4,7 @@ metadata:
   name: vault
   namespace: flux-system
 resources:
+  - ./namespace.yaml
   - ./repository.yaml
   - ./release.yaml
   - ./vault-ui.yaml
