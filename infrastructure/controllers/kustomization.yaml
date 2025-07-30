@@ -6,3 +6,4 @@ resources:
   - ./democratic-csi
   - ./tailscale
   - ./vault
+  - ./external-secrets
