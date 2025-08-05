@@ -18,7 +18,7 @@ spec:
       - "vchord.so"
   storage:
     storageClass: iscsi
-    size: 16Gi
+    size: 32Gi
 ---
 apiVersion: postgresql.cnpg.io/v1
 kind: Database
