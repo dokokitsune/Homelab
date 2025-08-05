@@ -7,3 +7,4 @@ resources:
   - ./tailscale
   - ./vault
   - ./external-secrets
+  - ./cnpg
