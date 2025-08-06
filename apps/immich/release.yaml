@@ -38,7 +38,8 @@ spec:
             name: immich-secret
             key: DB_DATABASE_NAME
     immich:
-      metrics: true
+      metrics:
+        enabled: true
       persistence:
         library:
           existingClaim: immich-data
