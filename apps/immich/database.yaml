@@ -14,6 +14,8 @@ spec:
       secret:
         name: immich-db-secret
       postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS cube;
+        - CREATE EXTENSION IF NOT EXISTS earthdistance;
         - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
   postgresql:
     shared_preload_libraries:
@@ -32,9 +34,3 @@ spec:
   owner: immich
   cluster:
     name: immich-pg
-  extensions:
-    - name: vchord
-      ensure: present
-      version: 0.4.3
-    - name: earthdistance
-      ensure: present
