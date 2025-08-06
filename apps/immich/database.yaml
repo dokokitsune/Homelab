@@ -9,6 +9,8 @@ spec:
   primaryUpdateStrategy: unsupervised
   bootstrap:
     initdb:
+      postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
       database: immich
       owner: immich
       secret:
