@@ -9,12 +9,12 @@ spec:
   primaryUpdateStrategy: unsupervised
   bootstrap:
     initdb:
-      postInitSQL:
-        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
       database: immich
       owner: immich
       secret:
         name: immich-db-secret
+      postInitSQL:
+        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
