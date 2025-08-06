@@ -7,19 +7,19 @@ spec:
   imageName: tensorchord/cloudnative-vectorchord:17-0.4.3
   instances: 2
   primaryUpdateStrategy: unsupervised
+  enableSuperuserAccess: true
+  superuserSecret:
+    name: immich-db-secret
   bootstrap:
     initdb:
       database: immich
-      owner: immich
-      secret:
-        name: immich-db-secret
       postInitSQL:
-        - CREATE EXTENSION IF NOT EXISTS cube;
-        - CREATE EXTENSION IF NOT EXISTS earthdistance;
         - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
+  monitoring:
+    enablePodMonitor: true
   storage:
     storageClass: iscsi
     size: 32Gi
