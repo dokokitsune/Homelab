@@ -15,7 +15,6 @@ spec:
   selector:
     app.kubernetes.io/name: server
     app.kubernetes.io/instance: immich
-    component: server
   ports:
     - name: https
       port: 2283
