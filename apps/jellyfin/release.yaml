@@ -28,7 +28,7 @@ spec:
           path: /mnt/Bulk/k8s/nfs/media
     volumeMounts:
       - name: truenas-media
-        path: /mnt/Bulk/k8s/nfs/media
+        mountPath: /media
     persistence:
       config:
         enabled: true
