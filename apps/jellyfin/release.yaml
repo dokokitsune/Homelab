@@ -35,7 +35,3 @@ spec:
         size: 10Gi
       media:
         enabled: false
-    metrics:
-      enabled: true
-      serviceMonitor:
-        enabled: false
