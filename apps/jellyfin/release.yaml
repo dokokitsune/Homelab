@@ -33,6 +33,7 @@ spec:
       config:
         enabled: true
         storageClass: iscsi
+        size: 10Gi
       media:
         enabled: false
     metrics:
