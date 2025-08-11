@@ -31,7 +31,6 @@ spec:
         mountPath: /mnt/Bulk/k8s/nfs/media
     persistence:
       config:
-        enabled: true
         storageClass: iscsi
         size: 10Gi
       media:
