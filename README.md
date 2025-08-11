@@ -86,7 +86,12 @@ User Applications
     <tr>
         <td><img width="32" src="https://play-lh.googleusercontent.com/nJsRIdtaot1-FKH3kiRem4kjqUU1-_0hd_64qZH0BgtzUecYfWLCDfpk2nNVul8hOrw"></td>
         <td><a href="https://immich.app/">Immich</a></td>
-        <td>Self-hosted photo and video management service</td>
+        <td>Self-hosted photo and video management service.</td>
+    </tr>
+    <tr>
+        <td><img width="32" src="https://dashboard.snapcraft.io/site_media/appmedia/2022/01/jellyfin.png"></td>
+        <td><a href="https://jellyfin.org/">Jellyfin</a></td>
+        <td>Self-hosted steaming service for my backed up media.</td>
     </tr>
 </table>
 
