@@ -24,6 +24,7 @@ spec:
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 3000
+      fsGroup: 3000
     volumes:
       - name: truenas-media
         nfs:
