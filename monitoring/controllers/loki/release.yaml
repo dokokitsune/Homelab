@@ -41,6 +41,6 @@ spec:
       replicas: 0
     monitoring:
       selfMonitoring:
-        enabled: true
+        enabled: false
         grafanaAgent:
           installOperator: false

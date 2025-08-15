@@ -21,17 +21,20 @@ spec:
       annotations:
         tailscale.com/expose: "true"
         tailscale.com/hostname: jellyfin
-    volumes:
-      - name: truenas-media
-        nfs:
-          server: 10.246.144.2
-          path: /mnt/Bulk/k8s/nfs/media
-    volumeMounts:
-      - name: truenas-media
-        mountPath: /mnt/Bulk/k8s/nfs/media
-    persistence:
-      config:
-        storageClass: iscsi
-        size: 10Gi
-      media:
-        enabled: false
+      podSecurityContext:
+        runAsUser: 1000
+        runAsGroup: 3000
+      volumes:
+        - name: truenas-media
+          nfs:
+            server: 10.246.144.2
+            path: /mnt/Bulk/k8s/nfs/media
+      volumeMounts:
+        - name: truenas-media
+          mountPath: /mnt/Bulk/k8s/nfs/media
+      persistence:
+        config:
+          storageClass: iscsi
+          size: 10Gi
+        media:
+          enabled: false
