@@ -34,7 +34,7 @@ spec:
         mountPath: /mnt/Bulk/k8s/nfs/media
     persistence:
       config:
-        storageClass: iscsi
+        existingClaim: jellyfin-config
         size: 10Gi
       media:
         enabled: false
