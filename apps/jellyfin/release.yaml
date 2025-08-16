@@ -25,6 +25,8 @@ spec:
       runAsUser: 1000
       runAsGroup: 3000
       fsGroup: 3000
+    securityContext:
+      privileged: true
     volumes:
       - name: truenas-media
         nfs:
@@ -36,6 +38,9 @@ spec:
     volumeMounts:
       - name: truenas-media
         mountPath: /mnt/Bulk/k8s/nfs/media
+      - name: gpu
+        hostPath:
+          path: /dev/dri/renderD128
     persistence:
       config:
         storageClass: iscsi
