@@ -39,7 +39,7 @@ spec:
       - name: truenas-media
         mountPath: /mnt/Bulk/k8s/nfs/media
       - name: gpu
-        hostPath:
+        mountPath:
           path: /dev/dri/renderD128
     persistence:
       config:
