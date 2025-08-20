@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: intel
-  namespace: kube-system
+  namespace: inteldeviceplugins-system
 spec:
   interval: 12h
   url: https://intel.github.io/helm-charts/
