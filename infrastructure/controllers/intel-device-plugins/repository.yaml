@@ -5,4 +5,4 @@ metadata:
   namespace: kube-system
 spec:
   interval: 12h
-  url: https://intel.github.io/intel-device-plugins-for-kubernetes/charts/
+  url: https://intel.github.io/helm-charts/
