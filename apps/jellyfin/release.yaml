@@ -49,3 +49,6 @@ spec:
         size: 10Gi
       media:
         enabled: false
+    resources:
+      limits:
+        gpu.intel.com/i915: 1
