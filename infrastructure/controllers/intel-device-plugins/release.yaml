@@ -1,7 +1,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: intel-device-plugins-gpu
+  name: gpu-device-plugin
   namespace: kube-system
 spec:
   interval: 30m
@@ -16,7 +16,7 @@ spec:
       interval: 12h
   values:
     name: intel-gpu-plugin
-    sharedDevNum: 1 
+    sharedDevNum: 1
     nodeSelector: {}
     tolerations: []
     resources:
