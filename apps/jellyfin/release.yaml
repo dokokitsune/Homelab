@@ -37,12 +37,12 @@ spec:
           path: /mnt/Bulk/k8s/nfs/media
       - name: gpu
         hostPath:
-          path: /dev/dri/renderD128
+          path: /dev/dri
     volumeMounts:
       - name: truenas-media
         mountPath: /mnt/Bulk/k8s/nfs/media
       - name: gpu
-        mountPath: /dev/dri/renderD128
+        mountPath: /dev/dri
     persistence:
       config:
         storageClass: iscsi
