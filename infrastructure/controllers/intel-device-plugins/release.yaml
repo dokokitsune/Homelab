@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: intel
-        namespace: kube-system
+        namespace: inteldeviceplugins-system
       interval: 12h
   values:
     devices:
