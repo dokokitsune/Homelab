@@ -8,4 +8,5 @@ resources:
   - ./vault
   - ./external-secrets
   - ./cnpg
+  - ./nfd
   - ./intel-device-plugins
