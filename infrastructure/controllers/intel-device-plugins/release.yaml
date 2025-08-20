@@ -17,8 +17,6 @@ spec:
   values:
     name: intel-gpu-plugin
     sharedDevNum: 1
-    nodeSelector: {}
-    tolerations: []
     resources:
       limits:
         cpu: 100m
