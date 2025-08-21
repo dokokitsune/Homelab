@@ -1,5 +1,5 @@
-apiVersion: helm.toolkit.fluxcd.io/v2
-kind: HelmRelease
+apiversion: helm.toolkit.fluxcd.io/v2
+kind: helmrelease
 metadata:
   name: device-plugin-operator
   namespace: inteldeviceplugins-system
@@ -9,11 +9,12 @@ spec:
     spec:
       chart: intel-device-plugins-operator
       version: 0.32.1
-      sourceRef:
-        kind: HelmRepository
+      sourceref:
+        kind: helmrepository
         name: intel
         namespace: inteldeviceplugins-system
       interval: 12h
   values:
-    devices:
-      gpu: true
+    manager:
+      devices:
+        gpu: true
