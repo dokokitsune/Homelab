@@ -10,7 +10,7 @@ spec:
       chart: intel-device-plugins-operator
       version: 0.32.1
       sourceRef:
-        kind: helmrepository
+        kind: HelmRepository
         name: intel
         namespace: inteldeviceplugins-system
       interval: 12h
