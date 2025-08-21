@@ -29,6 +29,6 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: intel
-        namespace: kube-system
+        namespace: inteldeviceplugins-system
   values:
     nodeFeatureRule: true
