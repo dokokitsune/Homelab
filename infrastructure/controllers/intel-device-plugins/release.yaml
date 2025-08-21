@@ -14,7 +14,21 @@ spec:
         name: intel
         namespace: inteldeviceplugins-system
       interval: 12h
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: intel-gpu-plugin
+  amespace: inteldeviceplugins-system
+spec:
+  interval: 12h
+  chart:
+    spec:
+      chart: intel-device-plugins-gpu
+      version: 0.32.1
+      sourceRef:
+        kind: HelmRepository
+        name: intel
+        namespace: kube-system
   values:
-    manager:
-      devices:
-        gpu: true
+    nodeFeatureRule: true
