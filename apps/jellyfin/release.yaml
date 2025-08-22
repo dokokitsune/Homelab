@@ -22,6 +22,7 @@ spec:
         tailscale.com/expose: "true"
         tailscale.com/funnel: "true"
         tailscale.com/hostname: jellyfin
+        tailscale.com/funnel-port: "8096"
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 3000
