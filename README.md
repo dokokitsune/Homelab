@@ -76,7 +76,7 @@ Everything needed to run the cluster
         <tr>
         <td><img width="32" src="https://avatars.githubusercontent.com/u/17888862?s=48&v=4"></td>
         <td><a href="https://github.com/intel/intel-device-plugins-for-kubernetes">Intel Device Plugins</a></td>
-        <td>Used to expose my Arc A310 gpu to the cluster.</td>
+        <td>Used to expose my Arc A310 GPU to the cluster.</td>
     </tr>
 </table>
 
