@@ -5,20 +5,14 @@ metadata:
   namespace: jellyfin
   annotations:
     tailscale.com/funnel: "true"
-    tailscale.com/hostname: jellyfin
+    tailscale.com/hostname: "jellyfin"
 spec:
   ingressClassName: tailscale
-  rules:
-    - host: jellyfin
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: jellyfin
-                port:
-                  number: 8096
+  defaultBackend:
+    service:
+      name: jellyfin  # Your Jellyfin service name
+      port:
+        number: 8096  # Jellyfin's port
   tls:
     - hosts:
-        - jellyfin
+        - jellyfin  # This becomes jellyfin.your-tailnet.ts.net
