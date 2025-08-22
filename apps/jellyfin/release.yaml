@@ -15,12 +15,6 @@ spec:
         namespace: jellyfin
       interval: 12h
   values:
-    service:
-      type: LoadBalancer
-      loadBalancerClass: "tailscale"
-      annotations:
-        tailscale.com/funnel: "true"
-        tailscale.com/hostname: jellyfin
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 3000
