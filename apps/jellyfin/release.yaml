@@ -19,7 +19,6 @@ spec:
       type: LoadBalancer
       loadBalancerClass: "tailscale"
       annotations:
-        tailscale.com/expose: "true"
         tailscale.com/funnel: "true"
         tailscale.com/hostname: jellyfin
     podSecurityContext:
