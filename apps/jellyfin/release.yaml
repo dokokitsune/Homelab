@@ -15,6 +15,16 @@ spec:
         namespace: jellyfin
       interval: 12h
   values:
+    ingress:
+      enabled: true
+      className: tailscale
+      annotations:
+        tailscale.com/funnel: "true"
+        tailscale.com/hostname: "jellyfin"
+      tls:
+        tls:
+          - hosts:
+              - jellyfin
     podSecurityContext:
       runAsUser: 1000
       runAsGroup: 3000
