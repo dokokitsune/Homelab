@@ -39,10 +39,9 @@ spec:
         mountPath: /dev/dri/renderD128
     persistence:
       config:
-        storageClass: iscsi
-        size: 10Gi
+        existingClaim: "jellyfin-config"
       media:
-        enabled: false
+        existingClaim: "jellyfin-media"
     resources:
       limits:
         gpu.intel.com/i915: 1
