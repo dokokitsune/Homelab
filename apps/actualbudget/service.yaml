@@ -15,7 +15,7 @@ spec:
   selector:
     app.kubernetes.io/name: actualbudget
   ports:
-    - name: http
+    - name: https
       port: 5006
       targetPort: 5006
       protocol: TCP
