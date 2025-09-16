@@ -14,8 +14,6 @@ spec:
   loadBalancerClass: tailscale
   selector:
     app.kubernetes.io/name: actualbudget
-    app.kubernetes.io/instance: actualbudget
-    component: server
   ports:
     - name: http
       port: 5006
