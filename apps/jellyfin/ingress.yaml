@@ -17,7 +17,7 @@ spec:
               service:
                 name: jellyfin
                 port:
-                  number: 8096  # This is the key fix!
+                  number: 8096
   tls:
     - hosts:
         - jellyfin
