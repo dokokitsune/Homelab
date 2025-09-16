@@ -26,3 +26,16 @@ spec:
   subject:
     organizationalUnits:
       - "Vault"
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: actualbudget-cert
+  namespace: actualbudget
+spec:
+  secretName: actualbudget-tls
+  issuerRef:
+    name: internal-ca-issuer       # your ClusterIssuer
+    kind: ClusterIssuer
+  dnsNames:
+    - "actualbudget.local"

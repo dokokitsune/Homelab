@@ -15,7 +15,18 @@ spec:
         namespace: flux-system
       interval: 12h
   values:
+    ingress:
+      enabled: true
+      className: "tailscale"
+      hosts:
+        - host: actualbudget.local
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - secretName: actualbudget-tls
+          hosts:
+            - actualbudget.local
     persistence:
       enabled: true
       storageClass: "iscsi"
-
