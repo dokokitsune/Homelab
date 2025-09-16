@@ -15,7 +15,7 @@ spec:
         namespace: flux-system
       interval: 12h
   values:
-    persistance:
+    persistence:
       enabled: true
       storageClass: "iscsi"
 
