@@ -98,6 +98,11 @@ User Applications
         <td><a href="https://jellyfin.org/">Jellyfin</a></td>
         <td>Self-hosted steaming service for my backed up media.</td>
     </tr>
+    <tr>
+        <td><img width="32" src="https://avatars.githubusercontent.com/u/37879538?s=48&v=4"></td>
+        <td><a href="https://actualbudget.org/">Actual</a></td>
+        <td>Self-hosted personal finance app with bank integration functionality.</td>
+    </tr>
 </table>
 
 ### Next Steps
