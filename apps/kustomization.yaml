@@ -5,3 +5,4 @@ resources:
   - ./immich
   - ./jellyfin
   - ./actualbudget
+  - ./n8n

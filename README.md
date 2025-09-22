@@ -20,8 +20,7 @@ Everything needed to run the cluster
 <table>
     <tr>
         <th>Logo</th>
-        <th>Name</th>
-        <th>Description</th>
+        <th>Name</th> <th>Description</th>
     </tr>
     <tr>
         <td><img width="32" src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/cert-manager.svg"></td>
