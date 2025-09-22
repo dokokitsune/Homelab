@@ -49,7 +49,7 @@ Everything needed to run the cluster
         <td>Used as a local key/value secret store.</td>
     </tr>
     <tr>
-        <td><img width="32" src="https://www.svgrepo.com/download/477066/lock.svg"></td>
+        <td><img width="32" src="https://external-secrets.io/latest/pictures/eso-round-logo.svg"></td>
         <td><a href="https://external-secrets.io/latest/">External Secrets Operator</a></td>
         <td>Used to sync my secrets from my Vault to my cluster.</td>
     </tr>
