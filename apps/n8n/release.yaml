@@ -27,7 +27,7 @@ spec:
       enabled: true
       className: "tailscale"
       annotations:
-        tailscale.com/funnel: true
+        tailscale.com/funnel: "true"
   valuesFrom:
     - kind: Secret
       name: n8n-secret
