@@ -41,3 +41,8 @@ spec:
       type: postgresdb
     redis:
       enabled: true
+    ingress:
+      enabled: true
+      className: "tailscale"
+      annotations:
+        tailscale.com/funnel: "true"
