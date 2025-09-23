@@ -46,6 +46,7 @@ spec:
       className: "tailscale"
       annotations:
         tailscale.com/funnel: "true"
+        tailscale.com/hostname: "n8n"
       hosts:
         - host: n8n
           http:
