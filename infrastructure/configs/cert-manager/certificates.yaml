@@ -35,7 +35,7 @@ metadata:
 spec:
   secretName: actualbudget-tls
   issuerRef:
-    name: internal-ca-issuer       # your ClusterIssuer
+    name: internal-ca-issuer
     kind: ClusterIssuer
   dnsNames:
     - "actualbudget.local"

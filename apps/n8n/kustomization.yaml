@@ -4,4 +4,5 @@ resources:
   - ./namespace.yaml
   - ./secret.yaml
   - ./release.yaml
+  - ./ingress.yaml
   - ./database.yaml

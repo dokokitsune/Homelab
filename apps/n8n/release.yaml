@@ -41,19 +41,3 @@ spec:
       type: postgresdb
     redis:
       enabled: true
-    ingress:
-      enabled: true
-      className: "tailscale"
-      annotations:
-        tailscale.com/funnel: "true"
-        tailscale.com/hostname: "n8n"
-      hosts:
-        - host: n8n
-          paths:
-            - path: /
-              pathType: Prefix
-              backend:
-                service:
-                  name: jellyfin
-                  port:
-                    number: 8096
