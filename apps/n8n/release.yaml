@@ -36,12 +36,13 @@ spec:
       persistence:
         enabled: true
         storageClass: "iscsi"
+    timezone: "America/Los_Angeles"
     db:
       type: postgresdb
     redis:
       enabled: true
     ingress:
       enabled: true
-      className: "tailscale"
+      className: tailscale
       annotations:
         tailscale.com/funnel: "true"
