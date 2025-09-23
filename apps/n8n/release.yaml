@@ -21,27 +21,6 @@ spec:
         storageClass: "iscsi"
     db:
       type: postgresdb
-    externalPostgresql:
-      host:
-        valueFrom:
-          secretKeyRef:
-            name: n8n-secret
-            key: DB_HOSTNAME
-      database:
-        valueFrom:
-          secretKeyRef:
-            name: n8n-secret
-            key: DB_NAME
-      username:
-        valueFrom:
-          secretKeyRef:
-            name: n8n-secret
-            key: DB_USERNAME
-      password:
-        valueFrom:
-          secretKeyRef:
-            name: n8n-secret
-            key: DB_PASSWORD
     redis:
       enabled: true
     ingress:
@@ -49,3 +28,20 @@ spec:
       className: "tailscale"
       annotations:
         tailscale.com/funnel: true
+  valuesFrom:
+    - kind: Secret
+      name: n8n-secret
+      valuesKey: DB_HOSTNAME
+      targetPath: externalPostgresql.host
+    - kind: Secret
+      name: n8n-secret
+      valuesKey: DB_NAME
+      targetPath: externalPostgresql.database
+    - kind: Secret
+      name: n8n-secret
+      valuesKey: DB_USERNAME
+      targetPath: externalPostgresql.username
+    - kind: Secret
+      name: n8n-secret
+      valuesKey: DB_PASSWORD
+      targetPath: externalPostgresql.password
