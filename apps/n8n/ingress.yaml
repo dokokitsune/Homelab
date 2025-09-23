@@ -8,14 +8,13 @@ metadata:
 spec:
   ingressClassName: tailscale
   rules:
-    hosts:
-      - host: n8n.local
-        http:
-          paths:
-            - path: /
-              pathType: Prefix
-              backend:
-                service:
-                  name: n8n
-                  port:
-                    number: 5678
+    - host: n8n.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: n8n
+                port:
+                  number: 5678
