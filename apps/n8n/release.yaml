@@ -51,3 +51,6 @@ spec:
           paths:
             - path: /
               pathType: Prefix
+      tls:
+        hosts:
+          - n8n
