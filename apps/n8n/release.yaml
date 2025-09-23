@@ -48,9 +48,15 @@ spec:
         tailscale.com/funnel: "true"
       hosts:
         - host: n8n
-          paths:
-            - path: /
-              pathType: Prefix
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: n8n
+                    port:
+                      number: 5678
       tls:
         hosts:
           - n8n
