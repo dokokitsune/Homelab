@@ -46,3 +46,8 @@ spec:
       className: "tailscale"
       annotations:
         tailscale.com/funnel: "true"
+      hosts:
+        - host: n8n
+          paths:
+            - path: /
+              pathType: Prefix
