@@ -49,12 +49,6 @@ spec:
         tailscale.com/hostname: "n8n"
       hosts:
         - host: n8n
-          http:
-            paths:
-              - path: /
-                pathType: Prefix
-                backend:
-                  service:
-                    name: n8n
-                    port:
-                      number: 5678
+          paths:
+            - path: /
+              pathType: Prefix
