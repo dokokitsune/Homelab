@@ -14,20 +14,6 @@ spec:
         name: community-charts
         namespace: flux-system
       interval: 12h
-  values:
-    main:
-      persistence:
-        enabled: true
-        storageClass: "iscsi"
-    db:
-      type: postgresdb
-    redis:
-      enabled: true
-    ingress:
-      enabled: true
-      className: "tailscale"
-      annotations:
-        tailscale.com/funnel: "true"
   valuesFrom:
     - kind: Secret
       name: n8n-secret
@@ -45,3 +31,17 @@ spec:
       name: n8n-secret
       valuesKey: DB_PASSWORD
       targetPath: externalPostgresql.password
+  values:
+    main:
+      persistence:
+        enabled: true
+        storageClass: "iscsi"
+    db:
+      type: postgresdb
+    redis:
+      enabled: true
+    ingress:
+      enabled: true
+      className: "tailscale"
+      annotations:
+        tailscale.com/funnel: "true"
