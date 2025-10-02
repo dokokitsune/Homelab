@@ -21,7 +21,7 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 50M
+            memory: 50Mi
             ephemeral-storage: 100Mi
           limits:
             memory: 100Mi
@@ -30,10 +30,10 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 50M
+            memory: 50Mi
             ephemeral-storage: 100Mi
           limits:
-            memory: 100M
+            memory: 100Mi
             ephemeral-storage: 200Mi
       externalResizer:
         resources:
