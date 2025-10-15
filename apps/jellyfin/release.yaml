@@ -43,6 +43,11 @@ spec:
         size: 10Gi
       media:
         enabled: false
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+        namespace: monitoring
     resources:
       limits:
         gpu.intel.com/i915: 1
