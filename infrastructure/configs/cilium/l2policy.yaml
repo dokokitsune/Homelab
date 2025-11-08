@@ -11,3 +11,5 @@ spec:
   # IMPORTANT: if externalIPss is desired, externalIPs.enabled=true must be set in values.yaml
   externalIPs: true
   loadBalancerIPs: true
+  interfaces:
+    - ^eth[0-1]+
