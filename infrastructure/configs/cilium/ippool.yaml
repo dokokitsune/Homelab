@@ -1,11 +1,11 @@
 apiVersion: "cilium.io/v2alpha1"
 kind: CiliumLoadBalancerIPPool
 metadata:
-  name: vault-pool
+  name: app-pool
   namespace: kube-system
 spec:
   blocks:
-    - cidr: "10.246.100.160/27"
+    - cidr: "10.246.144.2/28"
   serviceSelector:
     matchLabels:
-      app.kubernetes.io/name: vault-ui
+      app.kubernetes.io/name: jellyfin

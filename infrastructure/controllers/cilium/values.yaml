@@ -1,16 +1,13 @@
 ipam:
   mode: kubernetes
-
 kubeProxyReplacement: true
-
 enable-l2-announcements: true
 kube-proxy-replacement: true
 k8s-client-qps: 15
 k8s-client-burst: 20
-
+externalIPs: true
 socketLB:
   hostNamespaceOnly: true
-
 securityContext:
   capabilities:
     ciliumAgent:
@@ -29,15 +26,12 @@ securityContext:
       - NET_ADMIN
       - SYS_ADMIN
       - SYS_RESOURCE
-
 cgroup:
   autoMount:
     enabled: false
   hostRoot: /sys/fs/cgroup
-
 k8sServiceHost: localhost
 k8sServicePort: 7445
-
 hubble:
   relay:
     enabled: true
