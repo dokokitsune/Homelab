@@ -2,10 +2,9 @@ apiVersion: "cilium.io/v2alpha1"
 kind: CiliumLoadBalancerIPPool
 metadata:
   name: app-pool
-  namespace: kube-system
 spec:
   blocks:
-    - cidr: "10.246.144.2/28"
+    - cidr: "10.246.144.200/29"
   serviceSelector:
     matchLabels:
       app.kubernetes.io/name: jellyfin
