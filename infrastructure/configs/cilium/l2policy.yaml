@@ -14,4 +14,4 @@ spec:
   externalIPs: true
   loadBalancerIPs: true
   interfaces:
-    - "eth0"
+    - "^(en|eth).*"
