@@ -2,7 +2,6 @@ apiVersion: "cilium.io/v2alpha1"
 kind: CiliumL2AnnouncementPolicy
 metadata:
   name: app-policy
-  namespace: kube-system
 spec:
   serviceSelector:
     matchLabels:
