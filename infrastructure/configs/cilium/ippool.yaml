@@ -4,7 +4,7 @@ metadata:
   name: app-pool
 spec:
   blocks:
-    - cidr: "10.246.144.200/29"
+    - cidr: "10.246.145.1/29"
   serviceSelector:
     matchLabels:
       app.kubernetes.io/name: jellyfin
