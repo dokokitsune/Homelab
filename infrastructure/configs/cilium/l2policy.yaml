@@ -10,8 +10,9 @@ spec:
     matchExpressions:
       - key: node-role.kubernetes.io/control-plane
         operator: DoesNotExist
-  # IMPORTANT: if externalIPss is desired, externalIPs.enabled=true must be set in values.yaml
-  externalIPs: true
+        # IMPORTANT: if externalIPss is desired, externalIPs.enabled=true must be set in values.yaml
+  # externalIPs: true
+
   loadBalancerIPs: true
   interfaces:
     - "^(en|eth).*"
