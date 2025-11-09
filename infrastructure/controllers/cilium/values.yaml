@@ -1,6 +1,5 @@
 ipam:
   mode: kubernetes
-kubeProxyReplacement: true
 enable-l2-announcements: true
 kube-proxy-replacement: true
 k8s-client-qps: 15
