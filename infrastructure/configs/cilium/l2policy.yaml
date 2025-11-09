@@ -14,4 +14,4 @@ spec:
   externalIPs: true
   loadBalancerIPs: true
   interfaces:
-    - "enp42s0"
+    - "eth0"
