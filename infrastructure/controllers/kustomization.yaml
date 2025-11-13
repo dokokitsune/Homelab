@@ -6,7 +6,7 @@ resources:
   - ./democratic-csi
   - ./tailscale
   - ./vault
-  - ./external-secrets
+#  - ./external-secrets
   - ./cnpg
   - ./nfd
   - ./intel-device-plugins
