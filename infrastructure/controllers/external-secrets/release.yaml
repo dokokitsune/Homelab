@@ -25,8 +25,8 @@ spec:
           create: true
           issuerRef:
             group: cert-manager.io
-            kind: "Issuer"
-            name: "external-secrets-selfsigned"
+            kind: "ClusterIssuer"
+            name: "internal-ca-issuer"
           duration: "24h"
   upgrade:
     crds: CreateReplace
