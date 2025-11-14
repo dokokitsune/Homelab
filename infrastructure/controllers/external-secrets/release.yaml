@@ -10,11 +10,13 @@ spec:
   chart:
     spec:
       chart: external-secrets
-      version: 0.18.2
+      version: 1.0.0
       sourceRef:
         kind: HelmRepository
         name: external-secrets
         namespace: flux-system
   values:
-  upgrade:
-    crds: CreateReplace
+    installCRDs: true
+    serviceMonitor:
+      enabled: true
+      interval: 1m
