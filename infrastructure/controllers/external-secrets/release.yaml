@@ -16,17 +16,5 @@ spec:
         name: external-secrets
         namespace: flux-system
   values:
-    webhook:
-      lookaheadInterval: "1h"
-      certManager:
-        enabled: true
-        addInjectorAnnotations: true
-        cert:
-          create: true
-          issuerRef:
-            group: cert-manager.io
-            kind: "ClusterIssuer"
-            name: "internal-ca-issuer"
-          duration: "24h"
   upgrade:
     crds: CreateReplace
