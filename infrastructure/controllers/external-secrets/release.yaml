@@ -17,7 +17,16 @@ spec:
         namespace: flux-system
   values:
     webhook:
+      lookaheadInterval: "1h"
       certManager:
         enabled: true
+        addInjectorAnnotations: true
+        cert:
+          create: true
+          issuerRef:
+            group: cert-manager.io
+            kind: "Issuer"
+            name: "external-secrets-selfsigned"
+          duration: "24h"
   upgrade:
     crds: CreateReplace
