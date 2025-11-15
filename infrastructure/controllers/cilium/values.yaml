@@ -2,9 +2,13 @@ ipam:
   mode: kubernetes
 l2announcements:
   enabled: true
+  leaseDuration: 3s
+  leaseRenewDeadline: 1s
+  leaseRetryPeriod: 500ms
 kubeProxyReplacement: true
-k8sClientRateLimit.qps: 15
-k8sClientRateLimit.burst: 20
+k8sClientRateLimit:
+  qps: 15
+  burst: 20
 socketLB:
   hostNamespaceOnly: true
 securityContext:
