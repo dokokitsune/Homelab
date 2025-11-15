@@ -9,4 +9,4 @@ resources:
 #  - ./external-secrets
   - ./cnpg
   - ./nfd
-#  - ./intel-device-plugins
+  - ./intel-device-plugins
