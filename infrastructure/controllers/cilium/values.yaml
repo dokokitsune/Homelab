@@ -1,6 +1,7 @@
 ipam:
   mode: kubernetes
-l2announcements.enabled: true
+l2announcements:
+  enabled: true
 kubeProxyReplacement: true
 k8sClientRateLimit.qps: 15
 k8sClientRateLimit.burst: 20
