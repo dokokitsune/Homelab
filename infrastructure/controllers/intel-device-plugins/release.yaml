@@ -21,6 +21,9 @@ metadata:
   name: intel-gpu-plugin
   namespace: inteldeviceplugins-system
 spec:
+  dependsOn:
+    - name: device-plugin-operator
+      namespace: inteldeviceplugins-system
   interval: 12h
   chart:
     spec:
