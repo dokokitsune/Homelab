@@ -15,29 +15,29 @@ spec:
         namespace: jellyfin
       interval: 12h
   values:
-    image:
-      repository: lscr.io/linuxserver/jellyfin
-      pullPolicy: Always
-      tag: latest
     service:
       type: LoadBalancer
     podSecurityContext:
       fsGroup: 3000
     securityContext:
-      privileged: true
+      capabilities:
+        add:
+          - "SYS_ADMIN"
+        drop:
+          - "ALL"
     volumes:
       - name: truenas-media
         nfs:
           server: 10.246.144.2
           path: /mnt/Bulk/media
-      - name: dri
+      - name: hwa
         hostPath:
-          path: /dev/dri/renderD128
+          path: /dev/dri
     volumeMounts:
       - name: truenas-media
         mountPath: /mnt/Bulk/media
-      - name: dri
-        mountPath: /dev/dri/renderD128
+      - name: hwa
+        mountPath: /dev/dri
     persistence:
       config:
         storageClass: iscsi
@@ -52,3 +52,5 @@ spec:
     resources:
       limits:
         gpu.intel.com/i915: 1
+      requests:
+        gpu.intel.com/i915: "1"
