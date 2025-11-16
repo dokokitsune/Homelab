@@ -28,14 +28,14 @@ spec:
         nfs:
           server: 10.246.144.2
           path: /mnt/Bulk/media
-      - name: gpu
+      - name: dri
         hostPath:
-          path: /dev/dri/renderD128
+          path: /dev/dri
     volumeMounts:
       - name: truenas-media
         mountPath: /mnt/Bulk/media
-      - name: gpu
-        mountPath: /dev/dri/renderD128
+      - name: dri
+        mountPath: /dev/dri
     persistence:
       config:
         storageClass: iscsi
