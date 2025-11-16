@@ -32,12 +32,12 @@ spec:
           path: /mnt/Bulk/media
       - name: hwa
         hostPath:
-          path: /dev/dri
+          path: /dev/dri/renderD128
     volumeMounts:
       - name: truenas-media
         mountPath: /mnt/Bulk/media
       - name: hwa
-        mountPath: /dev/dri
+        mountPath: /dev/dri/renderD128
     persistence:
       config:
         storageClass: iscsi
