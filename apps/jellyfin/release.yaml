@@ -16,8 +16,8 @@ spec:
       interval: 12h
   values:
     image:
-      repository: ghcr.io/jellyfin/jellyfin
-      tag: 10.11.2@sha256:749972be6e7d440a47531ee36c9e38ea7a6271c875f42e8a52851c39862b0773
+      repository: ghcr.io/linuxserver/jellyfin
+      tag: 10.11.2@sha256:e80d9e506715874c7741abd4f669e143c011cf3083c71c90b6df1ff4498f74d3
     service:
       type: LoadBalancer
     podSecurityContext:
