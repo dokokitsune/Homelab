@@ -17,6 +17,10 @@ spec:
   values:
     service:
       type: LoadBalancer
+    podSecurityContext:
+      fsGroup: 3000
+      seccompProfile:
+        type: RuntimeDefault
     securityContext:
       capabilities:
         add:
