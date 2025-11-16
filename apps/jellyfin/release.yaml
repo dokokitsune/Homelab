@@ -15,6 +15,9 @@ spec:
         namespace: jellyfin
       interval: 12h
   values:
+    image:
+      repository: ghcr.io/jellyfin/jellyfin
+      tag: 10.11.2@sha256:749972be6e7d440a47531ee36c9e38ea7a6271c875f42e8a52851c39862b0773
     service:
       type: LoadBalancer
     podSecurityContext:
@@ -28,15 +31,14 @@ spec:
         nfs:
           server: 10.246.144.2
           path: /mnt/Bulk/media
-      - name: intel-gpu-libs
+      - name: dri
         hostPath:
-          path: /usr/lib64
+          path: /dev/dri/renderD128
     volumeMounts:
       - name: truenas-media
         mountPath: /mnt/Bulk/media
-      - name: intel-gpu-libs
-        mountPath: /usr/lib/x86_64-linux-gnu
-        readOnly: true
+      - name: dri
+        mountPath: /dev/dri/renderD128
     persistence:
       config:
         storageClass: iscsi
