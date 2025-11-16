@@ -28,14 +28,15 @@ spec:
         nfs:
           server: 10.246.144.2
           path: /mnt/Bulk/media
-      - name: dri
+      - name: intel-gpu-libs
         hostPath:
-          path: /dev/dri
+          path: /usr/lib64
     volumeMounts:
       - name: truenas-media
         mountPath: /mnt/Bulk/media
-      - name: dri
-        mountPath: /dev/dri
+      - name: intel-gpu-libs
+        mountPath: /usr/lib/x86_64-linux-gnu
+        readOnly: true
     persistence:
       config:
         storageClass: iscsi
