@@ -18,8 +18,6 @@ spec:
     service:
       type: LoadBalancer
     podSecurityContext:
-      runAsUser: 1000
-      runAsGroup: 3000
       fsGroup: 3000
       seccompProfile:
         type: RuntimeDefault
@@ -31,14 +29,9 @@ spec:
         nfs:
           server: 10.246.144.2
           path: /mnt/Bulk/media
-      - name: dri
-        hostPath:
-          path: /dev/dri
     volumeMounts:
       - name: truenas-media
         mountPath: /mnt/Bulk/media
-      - name: dri
-        mountPath: /dev/dri
     persistence:
       config:
         storageClass: iscsi
