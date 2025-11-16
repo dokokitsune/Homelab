@@ -17,6 +17,7 @@ spec:
   values:
     image:
       repository: lscr.io/linuxserver/jellyfin
+      pullPolicy: Always
       tag: latest
     service:
       type: LoadBalancer
