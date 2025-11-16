@@ -20,7 +20,6 @@ spec:
     podSecurityContext:
       fsGroup: 3000
     securityContext:
-      privileged: true
       capabilities:
         add:
           - "SYS_ADMIN"
@@ -43,6 +42,9 @@ spec:
       config:
         storageClass: iscsi
         size: 10Gi
+      cache:
+        storageClass: iscsi
+        size: 5Gi
       media:
         enabled: false
     metrics:
