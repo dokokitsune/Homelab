@@ -23,17 +23,19 @@ spec:
         type: RuntimeDefault
     securityContext:
       privileged: true
-      allowPrivilegeEscalation: true
-      readOnlyRootFilesystem: false
-      seccompProfile: {type: Unconfined}
     volumes:
       - name: truenas-media
         nfs:
           server: 10.246.144.2
           path: /mnt/Bulk/media
+      - name: gpu
+        hostPath:
+          path: /dev/dri/renderD128
     volumeMounts:
       - name: truenas-media
         mountPath: /mnt/Bulk/media
+      - name: gpu
+        mountPath: /dev/dri/renderD128
     persistence:
       config:
         storageClass: iscsi
