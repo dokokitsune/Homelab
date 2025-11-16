@@ -16,7 +16,7 @@ spec:
       interval: 12h
   values:
     image:
-      repository: lscr.io/linuxserver/jellyfin:latest
+      repository: lscr.io/linuxserver/jellyfin
       tag: latest
     service:
       type: LoadBalancer
