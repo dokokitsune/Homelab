@@ -22,8 +22,6 @@ spec:
       type: LoadBalancer
     podSecurityContext:
       fsGroup: 3000
-      seccompProfile:
-        type: RuntimeDefault
     securityContext:
       privileged: true
     volumes:
