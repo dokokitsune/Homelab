@@ -17,13 +17,13 @@ spec:
   values:
     service:
       type: LoadBalancer
-    podSecurityContext:
-      fsGroup: 3000
-      seccompProfile:
-        type: RuntimeDefault
     securityContext:
-      privileged: true
-      allowPrivilegeEscalation: true
+      capabilities:
+        add:
+          - "SYS_ADMIN"
+        drop:
+          - "ALL"
+      privileged: false
     volumes:
       - name: truenas-media
         nfs:
