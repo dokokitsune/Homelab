@@ -20,6 +20,7 @@ spec:
     podSecurityContext:
       fsGroup: 3000
     securityContext:
+      privileged: true
       capabilities:
         add:
           - "SYS_ADMIN"
