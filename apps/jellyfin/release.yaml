@@ -18,7 +18,10 @@ spec:
     service:
       type: LoadBalancer
     podSecurityContext:
+      runAsUser: 1000
       fsGroup: 3000
+      supplementalGroups:
+        - 122
     securityContext:
       capabilities:
         add:
