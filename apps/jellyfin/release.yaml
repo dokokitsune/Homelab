@@ -30,14 +30,14 @@ spec:
         nfs:
           server: 10.246.144.2
           path: /mnt/Bulk/media
-      - name: hwa
-        hostPath:
-          path: /dev/dri
+#      - name: hwa
+#        hostPath:
+#          path: /dev/dri
     volumeMounts:
       - name: truenas-media
         mountPath: /mnt/Bulk/media
-      - name: hwa
-        mountPath: /dev/dri
+#      - name: hwa
+#        mountPath: /dev/dri
     persistence:
       config:
         storageClass: iscsi
