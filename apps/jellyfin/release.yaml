@@ -23,6 +23,8 @@ spec:
       supplementalGroups:
         - 122
     securityContext:
+      seccompProfile:
+        type: Unconfined
       privileged: true
     volumes:
       - name: truenas-media
