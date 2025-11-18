@@ -15,8 +15,6 @@ spec:
         namespace: immich
       interval: 12h
   values:
-    image:
-      tag: v1.137.3
     env:
       TZ: "America/Los_Angeles"
       DB_HOSTNAME:
