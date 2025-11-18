@@ -36,3 +36,4 @@ spec:
   values:
     name: i915
     nodeFeatureRule: true
+    enableMonitoring: true
