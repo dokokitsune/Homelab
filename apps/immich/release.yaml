@@ -39,13 +39,11 @@ spec:
           secretKeyRef:
             name: immich-secret
             key: DB_DATABASE_NAME
-    postgresql:
-      enabled: false
     immich:
       metrics:
         enabled: true
       persistence:
         library:
           existingClaim: immich-data
-    redis:
+    valkey:
       enabled: true
