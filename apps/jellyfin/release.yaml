@@ -19,12 +19,9 @@ spec:
       type: LoadBalancer
     podSecurityContext:
       runAsUser: 1000
-      fsGroup: 1000
+      runAsGroup: 1000
       supplementalGroups:
         - 122
-    securityContext:
-      seccompProfile:
-        type: Unconfined
       privileged: true
     volumes:
       - name: truenas-media
