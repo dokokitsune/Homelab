@@ -15,28 +15,32 @@ spec:
         namespace: immich
       interval: 12h
   values:
-    env:
-      TZ: "America/Los_Angeles"
-      DB_HOSTNAME:
-        valueFrom:
-          secretKeyRef:
-            name: immich-secret
-            key: DB_HOSTNAME
-      DB_USERNAME:
-        valueFrom:
-          secretKeyRef:
-            name: immich-secret
-            key: DB_USERNAME
-      DB_PASSWORD:
-        valueFrom:
-          secretKeyRef:
-            name: immich-secret
-            key: DB_PASSWORD
-      DB_DATABASE_NAME:
-        valueFrom:
-          secretKeyRef:
-            name: immich-secret
-            key: DB_DATABASE_NAME
+    controllers:
+      main:
+        containers:
+          main:
+            env:
+              TZ: "America/Los_Angeles"
+              DB_HOSTNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-secret
+                    key: DB_HOSTNAME
+              DB_USERNAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-secret
+                    key: DB_USERNAME
+              DB_PASSWORD:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-secret
+                    key: DB_PASSWORD
+              DB_DATABASE_NAME:
+                valueFrom:
+                  secretKeyRef:
+                    name: immich-secret
+                    key: DB_DATABASE_NAME
     immich:
       metrics:
         enabled: true
@@ -45,3 +49,26 @@ spec:
           existingClaim: immich-data
     valkey:
       enabled: true
+
+    server:
+      enabled: true
+      controllers:
+        main:
+          containers:
+            main:
+              resources:
+                limits:
+                  gpu.intel.com/i915: 1
+                requests:
+                  gpu.intel.com/i915: 1
+    machine-learning:
+      enabled: true
+      controllers:
+        main:
+          containers:
+            main:
+              resources:
+                limits:
+                  gpu.intel.com/i915: 1
+                requests:
+                  gpu.intel.com/i915: 1

@@ -37,3 +37,4 @@ spec:
     name: i915
     nodeFeatureRule: true
     enableMonitoring: true
+    sharedDevNum: 5
