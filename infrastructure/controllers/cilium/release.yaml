@@ -15,7 +15,6 @@ spec:
         kind: HelmRepository
         name: cilium
         namespace: kube-system
-
   valuesFrom:
     - kind: ConfigMap
       name: cilium-values
