@@ -19,7 +19,6 @@ spec:
     timeout: 10m
     replace: true
     crds: CreateReplace
-    createNamespace: true
   upgrade:
     remediation:
       remediateLastFailure: true
@@ -51,7 +50,6 @@ spec:
     timeout: 10m
     replace: true
     crds: CreateReplace
-    createNamespace: true
   upgrade:
     remediation:
       remediateLastFailure: true
