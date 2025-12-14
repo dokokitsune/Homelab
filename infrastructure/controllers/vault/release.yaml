@@ -45,10 +45,10 @@ spec:
         maxUnavailable: 1
       resources:
         requests:
-          memory: "512Mi"
-          cpu: "250m"
+          memory: "256Mi"
+          cpu: "100m"
         limits:
-          memory: "1Gi"
+          memory: "512Mi"
           cpu: "500m"
 
       readinessProbe:
