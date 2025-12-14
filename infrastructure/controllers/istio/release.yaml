@@ -26,10 +26,11 @@ spec:
       strategy: rollback
     cleanupOnFail: true
     crds: CreateReplace
-resources:
-  requests:
-    cpu: 100m
-    memory: 128Mi
+  values:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -61,7 +62,8 @@ spec:
       strategy: rollback
     cleanupOnFail: true
     crds: CreateReplace
-resources:
-  requests:
-    cpu: 100m
-    memory: 128Mi
+  values:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
