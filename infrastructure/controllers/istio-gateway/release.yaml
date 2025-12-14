@@ -1,13 +1,13 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: istiod
+  name: istio-gateway
   namespace: istio-system
 spec:
   interval: 30m
   chart:
     spec:
-      chart: istiod
+      chart: gateway
       version: 1.28.1
       sourceRef:
         kind: HelmRepository
