@@ -27,6 +27,11 @@ spec:
     cleanupOnFail: true
     crds: CreateReplace
   values:
+    global:
+      meshID: home-mesh
+      multiCluster:
+        clusterName: Cluster-Main
+      network: home-network
     resources:
       requests:
         cpu: 100m
