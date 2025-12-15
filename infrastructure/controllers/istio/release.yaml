@@ -68,6 +68,15 @@ spec:
     cleanupOnFail: true
     crds: CreateReplace
   values:
+    service:
+      type: LoadBalancer
+      ports:
+        - name: tls-istiod
+          port: 15012
+          targetPort: 15012
+        - name: tls-mesh
+          port: 15443
+          targetPort: 15443
     resources:
       requests:
         cpu: 100m
