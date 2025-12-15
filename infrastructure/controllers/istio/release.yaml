@@ -30,7 +30,7 @@ spec:
     global:
       meshID: home-mesh
       multiCluster:
-        clusterName: Cluster-Main
+        clusterName: cluster-main
       network: home-network
     resources:
       requests:
