@@ -9,6 +9,5 @@ resources:
   - ./vault
   - ./external-secrets
   - ./cnpg
-  - ./istio
   - ./nfd
   - ./intel-device-plugins
