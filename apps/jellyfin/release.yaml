@@ -8,7 +8,7 @@ spec:
   chart:
     spec:
       chart: jellyfin
-      version: 2.5.0
+      version: 2.7.0
       sourceRef:
         kind: HelmRepository
         name: jellyfin
@@ -37,7 +37,7 @@ spec:
         size: 10Gi
       cache:
         storageClass: iscsi
-        size: 5Gi
+        size: 10Gi
       media:
         enabled: false
     metrics:
