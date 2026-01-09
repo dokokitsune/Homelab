@@ -6,3 +6,4 @@ resources:
   - ./kube-prometheus-stack
   - ./loki
   - ./tempo
+  - ./open-telemetry
