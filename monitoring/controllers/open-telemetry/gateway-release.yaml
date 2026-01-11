@@ -18,5 +18,28 @@ spec:
       interval: 12h
     values:
       mode: deployment
-      clusterMetrics:
-        enabled: true
+      config:
+        exporters:
+          prometheusremotewrite:
+            endpoint: "http://prometheus-operated.monitoring.svc.cluster.local:9090/api/v1/write"
+          loki:
+            endpoint: "http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push"
+          otlp:
+            endpoint: "tempo-distributor.monitoring.svc.cluster.local:4317"
+            tls:
+              insecure: true
+
+        service:
+          pipelines:
+            metrics:
+              receivers: [otlp]
+              processors: [batch]
+              exporters: [prometheusremotewrite]
+            logs:
+              receivers: [otlp]
+              processors: [batch]
+              exporters: [loki]
+            traces:
+              receivers: [otlp]
+              processors: [batch]
+              exporters: [otlp]

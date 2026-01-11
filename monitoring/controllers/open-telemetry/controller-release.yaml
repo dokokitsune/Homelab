@@ -14,4 +14,3 @@ spec:
         name: open-telemetry
         namespace: monitoring
       interval: 12h
----
