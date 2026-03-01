@@ -56,7 +56,7 @@ spec:
       driver:
         image:
           registry: docker.io/democraticcsi/democratic-csi
-          tag: next
+          tag: latest
         securityContext:
           allowPrivilegeEscalation: true
           capabilities:
@@ -104,20 +104,20 @@ spec:
         instance_id:
         httpConnection:
           protocol: https
-          host: 10.246.144.2
+          host: 192.168.0.238
           port: 443
           allowInsecure: true
           path: "/api/v2.0"
           apiKey: ""
         zfs:
-          datasetParentName: Bulk/k8s/iscsi/v
-          detachedSnapshotsDatasetParentName: Bulk/k8s/iscsi/s
+          datasetParentName: flash/k8s/iscsi/v
+          detachedSnapshotsDatasetParentName: flash/k8s/iscsi/s
           zvolCompression:
           zvolDedup:
           zvolEnableReservation: false
           zvolBlocksize:
         iscsi:
-          targetPortal: "10.246.144.2:3260"
+          targetPortal: "192.168.0.238:3260"
           interface:
           namePrefix: csi-
           nameSuffix: "-cluster"

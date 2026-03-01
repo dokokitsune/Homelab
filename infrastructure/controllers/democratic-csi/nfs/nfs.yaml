@@ -56,7 +56,7 @@ spec:
       driver:
         image:
           registry: docker.io/democraticcsi/democratic-csi
-          tag: next
+          tag: latest
         resources:
           requests:
             cpu: 10m
@@ -98,7 +98,7 @@ spec:
         instance_id:
         httpConnection:
           protocol: https
-          host: 10.246.144.2
+          host: 192.168.0.238
           port: 443
           apiVersion: 2
           allowInsecure: true
@@ -112,7 +112,7 @@ spec:
           datasetPermissionsUser: 3000
           datasetPermissionsGroup: 3000
         nfs:
-          shareHost: 10.246.144.2
+          shareHost: 192.168.0.238
           shareAlldirs: false
           shareAllowedHosts: []
           shareAllowedNetworks: []
@@ -123,7 +123,7 @@ spec:
     node:
       driver:
         image:
-          tag: next
+          tag: latest
         resources:
           requests:
             cpu: 30m
