@@ -3,11 +3,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./cilium
+  - ./external-secrets
   - ./cert-manager
   - ./democratic-csi
   - ./tailscale
-  - ./vault
-  - ./external-secrets
+#  - ./vault
   - ./cnpg
-  - ./nfd
-  - ./intel-device-plugins
+#  - ./nfd
+#  - ./intel-device-plugins
