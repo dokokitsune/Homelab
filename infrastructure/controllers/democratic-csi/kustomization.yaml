@@ -7,5 +7,3 @@ resources:
   - namespace.yaml
   - repository.yaml
   - secret.yaml
-  - iscsi/iscsi.yaml
-  - nfs/nfs.yaml
