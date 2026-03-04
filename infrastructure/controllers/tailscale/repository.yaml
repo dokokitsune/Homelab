@@ -20,6 +20,6 @@ spec:
       valuesKey: clientId
       targetPath: oauth.clientId
     - kind: Secret
-      name: tailscale-clientsecret-secret
+      name: tailscale-clientid-secret
       valuesKey: clientSecret
       targetPath: oauth.clientSecret
