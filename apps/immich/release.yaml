@@ -44,31 +44,10 @@ spec:
     immich:
       metrics:
         enabled: true
-      persistence:
-        library:
-          existingClaim: immich-data
     valkey:
       enabled: true
 
     server:
       enabled: true
-      controllers:
-        main:
-          containers:
-            main:
-              resources:
-                limits:
-                  gpu.intel.com/i915: 1
-                requests:
-                  gpu.intel.com/i915: 1
     machine-learning:
       enabled: true
-      controllers:
-        main:
-          containers:
-            main:
-              resources:
-                limits:
-                  gpu.intel.com/i915: 1
-                requests:
-                  gpu.intel.com/i915: 1
