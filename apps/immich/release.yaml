@@ -44,6 +44,9 @@ spec:
     immich:
       metrics:
         enabled: true
+      persistence:
+        library:
+          existingClaim: immich-data
     valkey:
       enabled: true
 
