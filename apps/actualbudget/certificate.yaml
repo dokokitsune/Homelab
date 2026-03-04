@@ -4,7 +4,7 @@ metadata:
   name: actualbudget-cert
   namespace: actualbudget
 spec:
-  secretName: actualbudget-tls
+  secretName: actualbudeget-secret
   issuerRef:
     name: internal-ca-issuer
     kind: ClusterIssuer
