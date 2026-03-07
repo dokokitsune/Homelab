@@ -3,13 +3,17 @@
 ## Introduction
 This repo contains my configuration of my homelab.
 
-This is a project I do in my spare time to learn and have fun. I have recently graduated college with a Bachelor's in Computer Science from CSU Los Angeles. My specialty is Cloud Engineering and Kubernetes. My homelab is a place where I can learn and practice with industry standards in my own home.
+This is a project I do in my spare time to learn and have fun. I have recently graduated college with a Bachelor's degree in Computer Science from Cal State LA. My specialty is Cloud Engineering and Kubernetes. My homelab is a place where I can learn and practice with industry standards in my own home.
 
 ## Cluster Architecture
 I use [Talos Linux](https://www.talos.dev/) for each of my nodes. I have a lot of experience in [NixOS](https://nixos.org/), however setting up a complex kubernetes cluster with NixOS instances is cumbersome and Talos offers lightweight, minimal, and provides production grade security right out of the box. Currently I have a 6 node setup with 3 master nodes and 3 worker nodes.
 
 ## Hardware
-Currently I use a custom built home server (Ryzen 9 3900x, 64 GB of DDR4 RAM, 64GB SSD for boot, 30TB HDD array for storage) running [Incus](https://linuxcontainers.org/incus/) as a VM Hypervisor running 7 VM instances (6 + 1 TrueNAS).
+The cluster is hosted on bare metal across four Dell Wyse 5070 thin clients:
+- CPU: Intel Pentium Silver J5005
+- RAM: 8 or 16 GB DDR4 (Worker | Master)
+- Storage: 128 GB SATA
+- Network: 2.5 GbE NIC
 
 
 
@@ -43,14 +47,9 @@ Everything needed to run the cluster
         <td>Database operator for running PostgreSQL clusters.</td>
     </tr>
     <tr>
-        <td><img width="32" src="https://marketplace-assets.digitalocean.com/logos/hashicorpvault.svg"></td>
-        <td><a href="https://www.hashicorp.com/en/products/vault">Vault</a></td>
-        <td>Used as a local key/value secret store.</td>
-    </tr>
-    <tr>
         <td><img width="32" src="https://external-secrets.io/latest/pictures/eso-round-logo.svg"></td>
         <td><a href="https://external-secrets.io/latest/">External Secrets Operator</a></td>
-        <td>Used to sync my secrets from my Vault to my cluster.</td>
+        <td>Used to sync my secrets from AWS Secret Manager to my cluster.</td>
     </tr>
     <tr>
         <td><img width="32" src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/flux-cd.svg"></td>
@@ -60,23 +59,22 @@ Everything needed to run the cluster
     <tr>
         <td><img width="32" src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/grafana.svg"></td>
         <td><a href="https://grafana.com/">Grafana</a></td>
-        <td>The open observability platform.</td>
+        <td>The open observability platform for building custom dashboards for my cluster.</td>
     </tr>
     <tr>
         <td><img width="32" src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/prometheus.svg"></td>
         <td><a href="https://prometheus.io/">Prometheus</a></td>
-        <td>An open-source monitoring system with a dimensional data model, flexible query language, efficient time series database and modern alerting approach.</td>
+        <td>An open-source monitoring solution for collecting metrices accross my cluster.</td>
+    </tr>
+    <tr>
+        <td><img width="32" src="https://grafana.com/static/assets/img/logos/grafana-tempo.svg"></td>
+        <td><a href="https://github.com/grafana/tempo">Tempo</a></td>
+        <td>An open-source monitoring solution for collecting and tracking traces in my cluster</td>
     </tr>
     <tr>
         <td><img width="32" src="https://www.svgrepo.com/show/414732/democracy-esteem-regard.svg"></td>
         <td><a href="https://github.com/democratic-csi/democratic-csi">Democratic CSI Driver</a></td>
         <td>Used to provision Persistent Volumes directly on my TrueNAS.</td>
-    </tr>
-        <tr>
-        <td><img width="32" src="https://avatars.githubusercontent.com/u/17888862?s=48&v=4"></td>
-        <td><a href="https://github.com/intel/intel-device-plugins-for-kubernetes">Intel Device Plugins</a></td>
-        <td>Used to expose my Arc A310 GPU to the cluster.</td>
-    </tr>
 </table>
 
 ### Apps
@@ -91,11 +89,6 @@ User Applications
         <td><img width="32" src="https://play-lh.googleusercontent.com/nJsRIdtaot1-FKH3kiRem4kjqUU1-_0hd_64qZH0BgtzUecYfWLCDfpk2nNVul8hOrw"></td>
         <td><a href="https://immich.app/">Immich</a></td>
         <td>Self-hosted photo and video management service.</td>
-    </tr>
-    <tr>
-        <td><img width="32" src="https://dashboard.snapcraft.io/site_media/appmedia/2022/01/jellyfin.png"></td>
-        <td><a href="https://jellyfin.org/">Jellyfin</a></td>
-        <td>Self-hosted steaming service for my backed up media.</td>
     </tr>
     <tr>
         <td><img width="32" src="https://avatars.githubusercontent.com/u/37879538?s=48&v=4"></td>
