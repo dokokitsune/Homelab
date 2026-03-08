@@ -24,8 +24,3 @@ spec:
               endpoint: 0.0.0.0:4317
             http:
               endpoint: 0.0.0.0:4318
-        metrics: 
-          enabled: true
-          serviceMonitor:
-            enabled: true
-            interval: 30s
