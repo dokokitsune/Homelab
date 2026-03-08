@@ -64,7 +64,7 @@ Everything needed to run the cluster
     <tr>
         <td><img width="32" src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/prometheus.svg"></td>
         <td><a href="https://prometheus.io/">Prometheus</a></td>
-        <td>An open-source monitoring solution for collecting metrices accross my cluster.</td>
+        <td>An open-source monitoring solution for collecting metrices across my cluster.</td>
     </tr>
     <tr>
         <td><img width="32" src="https://grafana.com/static/assets/img/logos/grafana-tempo.svg"></td>
