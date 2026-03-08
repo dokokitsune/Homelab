@@ -4,7 +4,7 @@ metadata:
   name: immich-pg
   namespace: immich
 spec:
-  imageName: tensorchord/cloudnative-vectorchord:18-1.1.1
+  imageName: tensorchord/cloudnative-vectorchord:17-0.3.0
   instances: 2
   primaryUpdateStrategy: unsupervised
   bootstrap:
