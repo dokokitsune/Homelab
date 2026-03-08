@@ -4,7 +4,7 @@ metadata:
   name: immich-pg
   namespace: immich
 spec:
-  imageName: tensorchord/cloudnative-vectorchord:17-0.3.0
+  imageName: tensorchord/cloudnative-vectorchord:17-0.4.3
   instances: 2
   primaryUpdateStrategy: unsupervised
   bootstrap:
@@ -13,6 +13,10 @@ spec:
       owner: immich
       secret:
         name: immich-db-secret
+      postInitApplicationSQL:
+        - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
+        - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
+
   postgresql:
     shared_preload_libraries:
       - "vchord.so"
@@ -30,9 +34,3 @@ spec:
   owner: immich
   cluster:
     name: immich-pg
-  extensions:
-  - name: vchord
-    ensure: present
-    version: 0.3.0
-  - name: earthdistance
-    ensure: present
