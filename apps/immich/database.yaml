@@ -18,8 +18,7 @@ spec:
         - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
 
   postgresql:
-    shared_preload_libraries:
-      - "vchord.so"
+    shared_preload_libraries: "vchord.so"
   storage:
     storageClass: iscsi
     size: 32Gi
