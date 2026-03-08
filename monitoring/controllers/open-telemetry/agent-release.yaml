@@ -30,7 +30,7 @@ spec:
     config:
       exporters:
         otlp:
-          endpoint: "otel-gateway.monitoring.svc.cluster.local:4317"
+          endpoint: "otel-gateway-opentelemetry-collector.monitoring.svc.cluster.local:4317"
           tls:
             insecure: true
       service:
