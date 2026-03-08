@@ -22,11 +22,11 @@ spec:
       repository: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-k8s
     config:
       exporters:
-        prometheusremotewrite:
+        otlp/prometheusremotewrite:
           endpoint: "http://kube-prometheus-stack-prometheus:9090/api/v1/write"
           tls:
             insecure: true
-        loki:
+        otlp/loki:
           endpoint: "http://loki:3100/loki/api/v1/push"
           tls:
             insecure: true
@@ -40,12 +40,12 @@ spec:
           metrics:
             receivers: [otlp]
             processors: [batch]
-            exporters: [prometheusremotewrite]
+            exporters: [otlp/prometheusremotewrite]
           logs:
             receivers: [otlp]
             processors: [batch]
-            exporters: [loki]
+            exporters: [otlp/loki]
           traces:
             receivers: [otlp]
             processors: [batch]
-            exporters: [otlp]
+            exporters: [otlp/tempo]
