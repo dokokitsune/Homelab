@@ -27,7 +27,7 @@ spec:
           tls:
             insecure: true
         otlp/loki:
-          endpoint: "http://loki:3100/otlp"
+          endpoint: "http://loki:3100"
           tls:
             insecure: true
         otlp/tempo:
