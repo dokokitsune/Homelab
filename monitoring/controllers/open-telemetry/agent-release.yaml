@@ -19,7 +19,7 @@ spec:
   values:
     mode: daemonset
     image :
-      repository: otel/opentelemetry-collector-contrib
+      repository: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-k8s
     presets:
       logsCollection:
         enabled: true

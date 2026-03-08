@@ -19,7 +19,7 @@ spec:
   values:
     mode: deployment
     image :
-      repository: otel/opentelemetry-collector-contrib
+      repository: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-k8s
     config:
       exporters:
         prometheusremotewrite:
@@ -30,7 +30,7 @@ spec:
           endpoint: "http://loki:3100/loki/api/v1/push"
           tls:
             insecure: true
-        otlp:
+        otlp/tempo:
           endpoint: "http://tempo:3200"
           tls:
             insecure: true
