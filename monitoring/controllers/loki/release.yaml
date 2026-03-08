@@ -16,6 +16,8 @@ spec:
       interval: 12h
   values:
     deploymentMode: SingleBinary
+    otlp:
+      enabled: true
     loki:
       auth_enabled: false
       limits_config:

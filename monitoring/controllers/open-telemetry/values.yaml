@@ -254,7 +254,7 @@ imagePullSecrets: []
 # OpenTelemetry Collector executable
 command:
   name: ""
-  extraArgs: []
+  extr/tempoaArgs: []
 
 serviceAccount:
   # Specifies whether a service account should be created
