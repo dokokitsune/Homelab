@@ -23,11 +23,11 @@ spec:
     config:
       exporters:
         otlp/prometheusremotewrite:
-          endpoint: "http://kube-prometheus-stack-prometheus:9090/api/v1/write"
+          endpoint: "http://kube-prometheus-stack-prometheus:9090"
           tls:
             insecure: true
         otlp/loki:
-          endpoint: "http://loki:3100/loki/api/v1/push"
+          endpoint: "http://loki:3100/otlp"
           tls:
             insecure: true
         otlp/tempo:
