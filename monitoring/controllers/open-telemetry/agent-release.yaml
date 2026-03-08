@@ -16,24 +16,24 @@ spec:
         name: open-telemetry
         namespace: monitoring
       interval: 12h
-    values:
-      mode: daemonset
-      presets:
-        logsCollection:
-          enabled: true
-        kubeletMetrics:
-          enabled: true
-      config:
-        exporters:
-          otlp:
-            endpoint: "otel-gateway.monitoring.svc.cluster.local:4317"
-            tls:
-              insecure: true
-        service:
-          pipelines:
-            metrics:
-              exporters: [otlp]
-            logs:
-              exporters: [otlp]
-            traces:
-              exporters: [otlp]
+  values:
+    mode: daemonset
+    presets:
+      logsCollection:
+        enabled: true
+      kubeletMetrics:
+        enabled: true
+    config:
+      exporters:
+        otlp:
+          endpoint: "otel-gateway.monitoring.svc.cluster.local:4317"
+          tls:
+            insecure: true
+      service:
+        pipelines:
+          metrics:
+            exporters: [otlp]
+          logs:
+            exporters: [otlp]
+          traces:
+            exporters: [otlp]
