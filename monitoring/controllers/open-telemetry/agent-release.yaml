@@ -5,7 +5,7 @@ metadata:
   namespace: monitoring
 spec:
   dependsOn:
-    - name: opentelemetry-operator
+    - name: open-telemetry-operator
   interval: 30m
   chart:
     spec:
