@@ -30,6 +30,7 @@ spec:
       enabled: false
     prometheus:
       prometheusSpec:
+        enabledRemoteWriteReceiver: true
         podMonitorNamespaceSelector:
           matchLabels:
             podmonitorscrape: "true"

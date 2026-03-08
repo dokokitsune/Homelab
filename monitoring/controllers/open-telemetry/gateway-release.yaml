@@ -21,11 +21,15 @@ spec:
     config:
       exporters:
         prometheusremotewrite:
-          endpoint: "http://prometheus-operated.monitoring.svc.cluster.local:9090/api/v1/write"
+          endpoint: "http://kube-prometheus-stack-prometheus:9090/api/v1/write"
+          tls:
+            insecure: true
         loki:
-          endpoint: "http://loki-gateway.monitoring.svc.cluster.local/loki/api/v1/push"
+          endpoint: "http://loki:3100/loki/api/v1/push"
+          tls:
+            insecure: true
         otlp:
-          endpoint: "tempo-distributor.monitoring.svc.cluster.local:4317"
+          endpoint: "http://tempo:3200"
           tls:
             insecure: true
 
