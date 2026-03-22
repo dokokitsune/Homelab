@@ -13,7 +13,8 @@ spec:
           containers:
             - name: renovate
               image: renovate/renovate:43.84.2
-              args: ["--platform=github", "--dokokisune/Homelab"]
+              args:
+                - dokokisune/Homelab
               env:
                 - name: dryRun
                   value: "full"
