@@ -15,7 +15,7 @@ spec:
               image: renovate/renovate:43.84.2
               args:
 
-                - dokokisune/Homelab
+                - dokokitsune/Homelab
               env:
                 - name: dryRun
                   value: "full"
