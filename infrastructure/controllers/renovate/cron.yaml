@@ -14,10 +14,13 @@ spec:
             - name: renovate
               image: renovate/renovate:43.84.2
               args:
+
                 - dokokisune/Homelab
               env:
                 - name: dryRun
                   value: "full"
+                - name: platform
+                  value: github
                 - name: LOG_LEVEL
                   value: debug
                 - name: RENOVATE_TOKEN
