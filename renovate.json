@@ -1,7 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "kubernetes": {
+  "flux": {
     "managerFilePatterns": ["/\\.yaml$/"]
-  }
+  },
+  "packageRules": [
+    {
+      "matchManagers": ["flux"],
+      "matchDatasources": ["helm"]
+
+    }
+  ]
   
 }
