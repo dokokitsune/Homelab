@@ -74,7 +74,14 @@ Everything needed to run the cluster
     <tr>
         <td><img width="32" src="https://www.svgrepo.com/show/414732/democracy-esteem-regard.svg"></td>
         <td><a href="https://github.com/democratic-csi/democratic-csi">Democratic CSI Driver</a></td>
-        <td>Used to provision Persistent Volumes directly on my TrueNAS.</td>
+        <td>Used to provision Persistent Volumes directly on my TrueNAS.
+    </tr>
+    <tr>
+        <td><img width="32" src="https://docs.renovatebot.com/assets/images/logo.png"></td>
+        <td><a href="https://github.com/renovatebot/renovate">Renovate</a></td>
+        <td>Used to update dependencies in the cluster automaticlly.
+    </tr>
+    </td>
 </table>
 
 ### Apps
