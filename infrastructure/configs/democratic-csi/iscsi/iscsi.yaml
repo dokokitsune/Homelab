@@ -104,7 +104,7 @@ spec:
         instance_id:
         httpConnection:
           protocol: https
-          host: 192.168.0.238
+          host: 192.168.0.214
           port: 443
           allowInsecure: true
           path: "/api/v2.0"
@@ -117,7 +117,7 @@ spec:
           zvolEnableReservation: false
           zvolBlocksize:
         iscsi:
-          targetPortal: "192.168.0.238:3260"
+          targetPortal: "192.168.0.214:3260"
           interface:
           namePrefix: csi-
           nameSuffix: "-cluster"
