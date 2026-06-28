@@ -4,5 +4,6 @@ metadata:
   name: homepage
   namespace: homepage
 spec:
+  type: oci
   interval: 1h
   url: oci://ghcr.io/m0nsterrr/helm-charts/homepage

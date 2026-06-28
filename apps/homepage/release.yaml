@@ -24,8 +24,8 @@ spec:
             - path: /
               pathType: ImplementationSpecific
       tls:
-        - secretName: actualbudget-tls
-          hosts: [actualbudget.local]
+        - secretName: homepage-secret
+          hosts: [homepage.local]
     persistence:
       enabled: true
       storageClass: iscsi
