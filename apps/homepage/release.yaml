@@ -15,6 +15,12 @@ spec:
         namespace: homepage
       interval: 12h
   values:
+    env:
+      - name: HOMEPAGE_ALLOWED_HOSTS
+        valueFrom:
+          secretKeyRef:
+            name: homepage-env
+            key: allowed-hosts
     ingress:
       enabled: true
       ingressClassName: tailscale
