@@ -15,7 +15,7 @@ spec:
         namespace: homepage
       interval: 12h
   values:
-    config.env:
+    extraEnvFrom:
       - name: HOMEPAGE_ALLOWED_HOSTS
         valueFrom:
           secretKeyRef:
