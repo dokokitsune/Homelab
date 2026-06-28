@@ -15,9 +15,9 @@ spec:
         namespace: homepage
       interval: 12h
   values:
-    extraEnvFrom:
-      - secretRef:
-          name: homepage-env
+    config:
+      allowedHosts:
+        - "*"
     ingress:
       enabled: true
       ingressClassName: tailscale
