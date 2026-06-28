@@ -19,13 +19,13 @@ spec:
       enabled: true
       ingressClassName: tailscale
       hosts:
-        - host: homepage.local
+        - host: homepage
           paths:
             - path: /
               pathType: ImplementationSpecific
       tls:
         - secretName: homepage-secret
-          hosts: [homepage.local]
+          hosts: [homepage]
     persistence:
       enabled: true
       storageClass: iscsi
