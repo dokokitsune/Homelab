@@ -1,0 +1,8 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: homepage
+  namespace: homepage
+spec:
+  interval: 1h
+  url: oci://ghcr.io/m0nsterrr/helm-charts/homepage
