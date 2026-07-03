@@ -15,8 +15,6 @@ spec:
         namespace: homepage
       interval: 12h
   values:
-    # Homepage's Kubernetes integration needs the ServiceAccount token mounted
-    # to query the cluster API (app-template disables automount by default).
     defaultPodOptions:
       automountServiceAccountToken: true
     controllers:
@@ -28,10 +26,6 @@ spec:
             image:
               repository: ghcr.io/gethomepage/homepage
               tag: v1.13.2
-            # List form (not a map) so the order is preserved: each var must be
-            # defined before it is referenced via $(VAR) for expansion to work.
-            # Pod IP is required for Kubernetes probes; the allowed ingress
-            # host(s) are pulled from the homepage-allowed-hosts secret.
             env:
               - name: MY_POD_IP
                 valueFrom:
