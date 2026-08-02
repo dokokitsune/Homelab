@@ -98,7 +98,7 @@ spec:
         instance_id:
         httpConnection:
           protocol: https
-          host: 192.168.0.214
+          host: 192.168.4.32
           port: 443
           apiVersion: 2
           allowInsecure: true
@@ -112,7 +112,7 @@ spec:
           datasetPermissionsUser: 3000
           datasetPermissionsGroup: 3000
         nfs:
-          shareHost: 192.168.0.214
+          shareHost: 192.168.4.32
           shareAlldirs: false
           shareAllowedHosts: []
           shareAllowedNetworks: []
