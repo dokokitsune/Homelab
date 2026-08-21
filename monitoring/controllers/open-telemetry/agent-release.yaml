@@ -21,12 +21,12 @@ spec:
     image :
       repository: otel/opentelemetry-collector-contrib
       presets:
-      logsCollection:
-        enabled: true
-      kubeletMetrics:
-        enabled: true
-      clusterMetrics:
-        enabled: true
+        logsCollection:
+          enabled: true
+        kubeletMetrics:
+          enabled: true
+        clusterMetrics:
+          enabled: true
     config:
       exporters:
         otlp:

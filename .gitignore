@@ -1,0 +1,6 @@
+.env*
+.direnv/
+.mcp.json
+.codex
+result
+result-*
