@@ -1,5 +1,6 @@
 ipam:
   mode: kubernetes
+upgradeCompatibility: "1.18"
 l2announcements:
   enabled: true
   leaseDuration: 3s
