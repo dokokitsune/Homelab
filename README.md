@@ -86,41 +86,7 @@ socketLB:
   hostNamespaceOnly: true
 ```
 
-Flux does not install or configure the Cilium runtime. It owns only the Cilium policies and custom resources stored under `infrastructure/configs/cilium`:
-
-```yaml
-apiVersion: cilium.io/v2alpha1
-kind: CiliumL2AnnouncementPolicy
-metadata:
-  name: app-policy
-spec:
-  serviceSelector:
-    matchLabels:
-      app.kubernetes.io/name: jellyfin
-  nodeSelector:
-    matchExpressions:
-      - key: node-role.kubernetes.io/control-plane
-        operator: DoesNotExist
-  loadBalancerIPs: true
-  interfaces:
-    - "^(en|eth).*"
----
-apiVersion: cilium.io/v2
-kind: CiliumLoadBalancerIPPool
-metadata:
-  name: app-pool
-spec:
-  blocks:
-    - cidr: "10.246.144.200/29"
-  serviceSelector:
-    matchLabels:
-      app.kubernetes.io/name: jellyfin
----
-# Additional policies belong in the same Flux-managed directory.
-apiVersion: cilium.io/v2
-kind: CiliumNetworkPolicy
-```
-
+Flux does not install or configure the Cilium runtime. It owns only the Cilium policies and custom resources stored under `infrastructure/configs/cilium`.
 Talos therefore owns the complete Cilium installation, including Hubble Relay/UI, Envoy, the agent, operator, CRDs, shared ConfigMap, RBAC, and TLS Secrets. Flux must not contain a Cilium `HelmRelease` or manage those core resources. Cilium policies applied by Flux are consumed automatically by the Talos-managed Cilium agents.
 
 ## Hardware
