@@ -8,6 +8,121 @@ This is a project I do in my spare time to learn and have fun. I have recently g
 ## Cluster Architecture
 I use [Talos Linux](https://www.talos.dev/) for each of my nodes. I have a lot of experience in [NixOS](https://nixos.org/), however setting up a complex kubernetes cluster with NixOS instances is cumbersome and Talos offers lightweight, minimal, and provides production grade security right out of the box. Currently I have a 6 node setup with 3 master nodes and 3 worker nodes.
 
+### Cilium ownership
+
+Cilium `1.20.1` is bootstrapped from the Talos control-plane machine configuration as an inline manifest. Talos owns the kernel-facing and cluster-critical configuration:
+
+```yaml
+# Talos machine configuration
+machine:
+  features:
+    kubePrism:
+      enabled: true
+      port: 7445
+
+cluster:
+  network:
+    cni:
+      name: none
+  proxy:
+    disabled: true
+  inlineManifests:
+    - name: cilium
+      contents: <Helm-rendered Cilium 1.20.1 core manifest>
+
+---
+# Cilium Helm values rendered into the Talos inline manifest
+agent: true
+operator:
+  enabled: true
+envoy:
+  enabled: true
+ipam:
+  mode: kubernetes
+kubeProxyReplacement: true
+k8sServiceHost: localhost
+k8sServicePort: 7445
+cgroup:
+  autoMount:
+    enabled: false
+  hostRoot: /sys/fs/cgroup
+securityContext:
+  capabilities:
+    ciliumAgent:
+      - CHOWN
+      - KILL
+      - NET_ADMIN
+      - NET_RAW
+      - IPC_LOCK
+      - SYS_ADMIN
+      - SYS_RESOURCE
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+    cleanCiliumState:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_RESOURCE
+hubble:
+  enabled: true
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+    service:
+      annotations:
+        omni-kube-service-exposer.sidero.dev/port: "50080"
+        omni-kube-service-exposer.sidero.dev/label: Hubble
+l2announcements:
+  enabled: true
+  leaseDuration: 3s
+  leaseRenewDeadline: 1s
+  leaseRetryPeriod: 500ms
+k8sClientRateLimit:
+  qps: 15
+  burst: 20
+socketLB:
+  hostNamespaceOnly: true
+```
+
+Flux does not install or configure the Cilium runtime. It owns only the Cilium policies and custom resources stored under `infrastructure/configs/cilium`:
+
+```yaml
+apiVersion: cilium.io/v2alpha1
+kind: CiliumL2AnnouncementPolicy
+metadata:
+  name: app-policy
+spec:
+  serviceSelector:
+    matchLabels:
+      app.kubernetes.io/name: jellyfin
+  nodeSelector:
+    matchExpressions:
+      - key: node-role.kubernetes.io/control-plane
+        operator: DoesNotExist
+  loadBalancerIPs: true
+  interfaces:
+    - "^(en|eth).*"
+---
+apiVersion: cilium.io/v2
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: app-pool
+spec:
+  blocks:
+    - cidr: "10.246.144.200/29"
+  serviceSelector:
+    matchLabels:
+      app.kubernetes.io/name: jellyfin
+---
+# Additional policies belong in the same Flux-managed directory.
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+```
+
+Talos therefore owns the complete Cilium installation, including Hubble Relay/UI, Envoy, the agent, operator, CRDs, shared ConfigMap, RBAC, and TLS Secrets. Flux must not contain a Cilium `HelmRelease` or manage those core resources. Cilium policies applied by Flux are consumed automatically by the Talos-managed Cilium agents.
+
 ## Hardware
 The cluster is hosted on bare metal across four Dell Wyse 5070 thin clients:
 - CPU: Intel Pentium Silver J5005
