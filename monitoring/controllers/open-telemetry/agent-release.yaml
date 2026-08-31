@@ -18,15 +18,15 @@ spec:
       interval: 12h
   values:
     mode: daemonset
-    image :
+    image:
       repository: otel/opentelemetry-collector-contrib
-      presets:
-        logsCollection:
-          enabled: true
-        kubeletMetrics:
-          enabled: true
-        clusterMetrics:
-          enabled: true
+    presets:
+      logsCollection:
+        enabled: true
+      kubeletMetrics:
+        enabled: true
+      clusterMetrics:
+        enabled: true
     config:
       exporters:
         otlp:

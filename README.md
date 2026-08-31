@@ -37,6 +37,10 @@ operator:
   enabled: true
 envoy:
   enabled: true
+gatewayAPI:
+  enabled: true
+  enableAlpn: true
+  enableAppProtocol: true
 ipam:
   mode: kubernetes
 kubeProxyReplacement: true
@@ -88,6 +92,17 @@ socketLB:
 
 Flux does not install or configure the Cilium runtime. It owns only the Cilium policies and custom resources stored under `infrastructure/configs/cilium`.
 Talos therefore owns the complete Cilium installation, including Hubble Relay/UI, Envoy, the agent, operator, CRDs, shared ConfigMap, RBAC, and TLS Secrets. Flux must not contain a Cilium `HelmRelease` or manage those core resources. Cilium policies applied by Flux are consumed automatically by the Talos-managed Cilium agents.
+
+### Private Gateway API endpoints
+
+Flux configures two Cilium Gateways:
+
+- `apps` uses `192.168.4.200` for `*.home.dokocloud.net` application traffic.
+- `telemetry` uses `192.168.4.201` for metrics-only OTLP traffic at `otel.home.dokocloud.net` on ports `4317` and `4318`.
+
+Reserve both addresses outside the DHCP pool. On the Technitium DNS server at `192.168.4.51`, create a wildcard record for `*.home.dokocloud.net` pointing to `192.168.4.200`, then create the more-specific `otel.home.dokocloud.net` record pointing to `192.168.4.201`. Clients must trust the root CA used by the `internal-ca-issuer` ClusterIssuer.
+
+Keep the existing Tailscale exposure during initial rollout. Remove it only after the Gateway resources are programmed, both DNS answers resolve correctly, the wildcard certificate is ready, each application passes an HTTPS request, and both OTLP metrics transports have been tested.
 
 ## Hardware
 The cluster is hosted on bare metal across four Dell Wyse 5070 thin clients:

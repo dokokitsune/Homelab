@@ -8,3 +8,4 @@ resources:
   - ./database.yaml
   - ./release.yaml
   - ./lb.yaml
+  - ./gateway.yaml

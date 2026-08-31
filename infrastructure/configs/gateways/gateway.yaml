@@ -1,0 +1,96 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: apps
+  namespace: gateways
+spec:
+  gatewayClassName: cilium
+  infrastructure:
+    labels:
+      homelab/exposure: apps
+  addresses:
+    - type: IPAddress
+      value: 192.168.4.200
+  listeners:
+    - name: http
+      hostname: "*.home.dokocloud.net"
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: Same
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: HTTPRoute
+    - name: https
+      hostname: "*.home.dokocloud.net"
+      protocol: HTTPS
+      port: 443
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: ""
+            kind: Secret
+            name: dokocloud-home-wildcard-tls
+      allowedRoutes:
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              homelab/gateway-access: apps
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: HTTPRoute
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: telemetry
+  namespace: gateways
+spec:
+  gatewayClassName: cilium
+  infrastructure:
+    labels:
+      homelab/exposure: telemetry
+  addresses:
+    - type: IPAddress
+      value: 192.168.4.201
+  listeners:
+    - name: otlp-grpc
+      hostname: otel.home.dokocloud.net
+      protocol: HTTPS
+      port: 4317
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: ""
+            kind: Secret
+            name: dokocloud-home-wildcard-tls
+      allowedRoutes:
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              homelab/gateway-access: telemetry
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: GRPCRoute
+    - name: otlp-http
+      hostname: otel.home.dokocloud.net
+      protocol: HTTPS
+      port: 4318
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - group: ""
+            kind: Secret
+            name: dokocloud-home-wildcard-tls
+      allowedRoutes:
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              homelab/gateway-access: telemetry
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: HTTPRoute

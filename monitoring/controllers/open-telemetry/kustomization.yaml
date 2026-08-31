@@ -5,3 +5,4 @@ resources:
   - ./controller-release.yaml
   - ./agent-release.yaml
   - ./gateway-release.yaml
+  - ./gateway.yaml

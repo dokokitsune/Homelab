@@ -1,10 +1,21 @@
-apiVersion: "cilium.io/v2"
+apiVersion: cilium.io/v2
 kind: CiliumLoadBalancerIPPool
 metadata:
-  name: app-pool
+  name: apps-pool
 spec:
   blocks:
-    - cidr: "10.246.144.200/29"
+    - cidr: "192.168.4.200/32"
   serviceSelector:
     matchLabels:
-      app.kubernetes.io/name: jellyfin
+      homelab/exposure: apps
+---
+apiVersion: cilium.io/v2
+kind: CiliumLoadBalancerIPPool
+metadata:
+  name: telemetry-pool
+spec:
+  blocks:
+    - cidr: "192.168.4.201/32"
+  serviceSelector:
+    matchLabels:
+      homelab/exposure: telemetry

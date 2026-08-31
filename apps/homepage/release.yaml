@@ -37,7 +37,7 @@ spec:
                     name: homepage-allowed-hosts
                     key: HOMEPAGE_ALLOWED_HOSTS
               - name: HOMEPAGE_ALLOWED_HOSTS
-                value: "$(MY_POD_IP):3000,$(HOMEPAGE_ALLOWED_HOSTS_EXTRA)"
+                value: "$(MY_POD_IP):3000,homepage.home.dokocloud.net,$(HOMEPAGE_ALLOWED_HOSTS_EXTRA)"
             probes:
               liveness:
                 enabled: true

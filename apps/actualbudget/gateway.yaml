@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: actualbudget
+  namespace: actualbudget
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: apps
+      namespace: gateways
+      sectionName: https
+  hostnames:
+    - actualbudget.home.dokocloud.net
+  rules:
+    - backendRefs:
+        - name: actualbudget
+          port: 5006

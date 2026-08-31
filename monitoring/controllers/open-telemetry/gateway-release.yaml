@@ -18,9 +18,28 @@ spec:
       interval: 12h
   values:
     mode: deployment
-    image :
+    image:
       repository: otel/opentelemetry-collector-contrib
+    ports:
+      otlp-external-grpc:
+        enabled: true
+        containerPort: 14317
+        servicePort: 14317
+        protocol: TCP
+        appProtocol: kubernetes.io/h2c
+      otlp-external-http:
+        enabled: true
+        containerPort: 14318
+        servicePort: 14318
+        protocol: TCP
     config:
+      receivers:
+        otlp/external:
+          protocols:
+            grpc:
+              endpoint: ${env:MY_POD_IP}:14317
+            http:
+              endpoint: ${env:MY_POD_IP}:14318
       exporters:
         prometheusremotewrite:
           endpoint: "http://kube-prometheus-stack-prometheus:9090/api/v1/write"
@@ -31,14 +50,14 @@ spec:
           tls:
             insecure: true
         otlp/tempo:
-          endpoint: "http://tempo:3200"
+          endpoint: "tempo.monitoring.svc.cluster.local:4317"
           tls:
             insecure: true
 
       service:
         pipelines:
           metrics:
-            receivers: [otlp]
+            receivers: [otlp, otlp/external]
             processors: [batch]
             exporters: [prometheusremotewrite]
           logs:
