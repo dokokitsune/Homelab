@@ -1,4 +1,21 @@
 apiVersion: gateway.networking.k8s.io/v1
+kind: TCPRoute
+metadata:
+  name: carbon-metrics
+  namespace: monitoring
+spec:
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: telemetry
+      namespace: gateways
+      sectionName: carbon
+  rules:
+    - backendRefs:
+        - name: otel-gateway-opentelemetry-collector
+          port: 2003
+---
+apiVersion: gateway.networking.k8s.io/v1
 kind: GRPCRoute
 metadata:
   name: otlp-metrics-grpc

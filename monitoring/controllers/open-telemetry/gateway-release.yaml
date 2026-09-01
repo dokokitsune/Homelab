@@ -32,8 +32,16 @@ spec:
         containerPort: 14318
         servicePort: 14318
         protocol: TCP
+      carbon:
+        enabled: true
+        containerPort: 2003
+        servicePort: 2003
+        protocol: TCP
     config:
       receivers:
+        carbon:
+          endpoint: ${env:MY_POD_IP}:2003
+          transport: tcp
         otlp/external:
           protocols:
             grpc:
@@ -57,7 +65,7 @@ spec:
       service:
         pipelines:
           metrics:
-            receivers: [otlp, otlp/external]
+            receivers: [otlp, otlp/external, carbon]
             processors: [batch]
             exporters: [prometheusremotewrite]
           logs:

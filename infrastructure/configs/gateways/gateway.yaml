@@ -56,6 +56,18 @@ spec:
     - type: IPAddress
       value: 192.168.4.201
   listeners:
+    - name: carbon
+      protocol: TCP
+      port: 2003
+      allowedRoutes:
+        namespaces:
+          from: Selector
+          selector:
+            matchLabels:
+              homelab/gateway-access: telemetry
+        kinds:
+          - group: gateway.networking.k8s.io
+            kind: TCPRoute
     - name: otlp-grpc
       hostname: otel.home.dokocloud.net
       protocol: HTTPS

@@ -98,11 +98,11 @@ Talos therefore owns the complete Cilium installation, including Hubble Relay/UI
 Flux configures two Cilium Gateways:
 
 - `apps` uses `192.168.4.200` for `*.home.dokocloud.net` application traffic.
-- `telemetry` uses `192.168.4.201` for metrics-only OTLP traffic at `otel.home.dokocloud.net` on ports `4317` and `4318`.
+- `telemetry` uses `192.168.4.201` for metrics-only OTLP traffic at `otel.home.dokocloud.net` on ports `4317` and `4318`, plus Carbon plaintext metrics on TCP port `2003`.
 
 Reserve both addresses outside the DHCP pool. On the Technitium DNS server at `192.168.4.51`, create a wildcard record for `*.home.dokocloud.net` pointing to `192.168.4.200`, then create the more-specific `otel.home.dokocloud.net` record pointing to `192.168.4.201`. Clients must trust the root CA used by the `internal-ca-issuer` ClusterIssuer.
 
-Keep the existing Tailscale exposure during initial rollout. Remove it only after the Gateway resources are programmed, both DNS answers resolve correctly, the wildcard certificate is ready, each application passes an HTTPS request, and both OTLP metrics transports have been tested.
+Keep the existing Tailscale exposure during initial rollout. Remove it only after the Gateway resources are programmed, both DNS answers resolve correctly, the wildcard certificate is ready, each application passes an HTTPS request, and the OTLP and Carbon metrics transports have been tested.
 
 ## Hardware
 The cluster is hosted on bare metal across four Dell Wyse 5070 thin clients:
