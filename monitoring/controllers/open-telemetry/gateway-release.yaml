@@ -21,13 +21,13 @@ spec:
     image:
       repository: otel/opentelemetry-collector-contrib
     ports:
-      otlp-external-grpc:
+      otlp-ext-grpc:
         enabled: true
         containerPort: 14317
         servicePort: 14317
         protocol: TCP
         appProtocol: kubernetes.io/h2c
-      otlp-external-http:
+      otlp-ext-http:
         enabled: true
         containerPort: 14318
         servicePort: 14318
