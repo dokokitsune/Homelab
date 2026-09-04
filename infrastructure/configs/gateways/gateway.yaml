@@ -37,7 +37,7 @@ spec:
           from: Selector
           selector:
             matchLabels:
-              homelab/gateway-access: apps
+              homelab/gateway-apps: "true"
         kinds:
           - group: gateway.networking.k8s.io
             kind: HTTPRoute
@@ -64,7 +64,7 @@ spec:
           from: Selector
           selector:
             matchLabels:
-              homelab/gateway-access: telemetry
+              homelab/gateway-telemetry: "true"
         kinds:
           - group: gateway.networking.k8s.io
             kind: TCPRoute
@@ -83,7 +83,7 @@ spec:
           from: Selector
           selector:
             matchLabels:
-              homelab/gateway-access: telemetry
+              homelab/gateway-telemetry: "true"
         kinds:
           - group: gateway.networking.k8s.io
             kind: GRPCRoute
@@ -102,7 +102,7 @@ spec:
           from: Selector
           selector:
             matchLabels:
-              homelab/gateway-access: telemetry
+              homelab/gateway-telemetry: "true"
         kinds:
           - group: gateway.networking.k8s.io
             kind: HTTPRoute
