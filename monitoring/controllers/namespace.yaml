@@ -4,6 +4,5 @@ metadata:
   name: monitoring
   labels:
     pod-security.kubernetes.io/enforce: privileged
-    homelab/gateway-access: telemetry
     homelab/gateway-apps: "true"
     homelab/gateway-telemetry: "true"
