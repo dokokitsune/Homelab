@@ -1,8 +1,8 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: actualbudget
-  namespace: actualbudget
+  name: grafana
+  namespace: monitoring
 spec:
   parentRefs:
     - group: gateway.networking.k8s.io
@@ -11,9 +11,8 @@ spec:
       namespace: gateways
       sectionName: https
   hostnames:
-    - actualbudget.home.dokocloud.net
-    - actual.home.dokocloud.net
+    - grafana.home.dokocloud.net
   rules:
     - backendRefs:
-        - name: actualbudget
-          port: 5006
+        - name: grafana
+          port: 80

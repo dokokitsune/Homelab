@@ -4,3 +4,4 @@ metadata:
   name: immich
   labels:
     homelab/gateway-access: apps
+    homelab/gateway-apps: "true"

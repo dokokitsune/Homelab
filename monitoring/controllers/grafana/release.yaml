@@ -15,9 +15,12 @@ spec:
         namespace: monitoring
       interval: 12h
   values:
+    grafana.ini:
+      server:
+        domain: grafana.home.dokocloud.net
+        root_url: https://grafana.home.dokocloud.net
     service:
-      Type: LoadBalancer
-      loadBalancerClass: tailscale
+      type: ClusterIP
       annotations:
         tailscale.com/expose: "true"
         tailscale.com/hostname: grafana

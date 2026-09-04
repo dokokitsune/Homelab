@@ -102,6 +102,26 @@ Flux configures two Cilium Gateways:
 
 Reserve both addresses outside the DHCP pool. On the Technitium DNS server at `192.168.4.51`, create a wildcard record for `*.home.dokocloud.net` pointing to `192.168.4.200`, then create the more-specific `otel.home.dokocloud.net` record pointing to `192.168.4.201`. Clients must trust the root CA used by the `internal-ca-issuer` ClusterIssuer.
 
+LAN clients reach these names by using `192.168.4.51` as their resolver. Tailscale clients resolve through MagicDNS instead, so `home.dokocloud.net` also needs a split-DNS nameserver entry pointing at `192.168.4.51` in the Tailscale admin console.
+
+Each Gateway grants namespace access through its own boolean label, so a namespace can attach routes to both:
+
+| Label | Grants routes on |
+| --- | --- |
+| `homelab/gateway-apps: "true"` | `apps` (HTTPS `443`) |
+| `homelab/gateway-telemetry: "true"` | `telemetry` (OTLP `4317`/`4318`, Carbon `2003`) |
+
+`monitoring` carries both, because Grafana is published on the `apps` Gateway while the OTLP and Carbon receivers stay on `telemetry`.
+
+Hostnames currently routed on the `apps` Gateway:
+
+| Hostname | Namespace | Backend |
+| --- | --- | --- |
+| `immich.home.dokocloud.net` | `immich` | `immich-server:2283` |
+| `actualbudget.home.dokocloud.net`, `actual.home.dokocloud.net` | `actualbudget` | `actualbudget:5006` |
+| `homepage.home.dokocloud.net` | `homepage` | `homepage:3000` |
+| `grafana.home.dokocloud.net` | `monitoring` | `grafana:80` |
+
 Keep the existing Tailscale exposure during initial rollout. Remove it only after the Gateway resources are programmed, both DNS answers resolve correctly, the wildcard certificate is ready, each application passes an HTTPS request, and the OTLP and Carbon metrics transports have been tested.
 
 ## Hardware
