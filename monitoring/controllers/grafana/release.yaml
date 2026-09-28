@@ -15,10 +15,47 @@ spec:
         namespace: monitoring
       interval: 12h
   values:
+    datasources:
+      datasources.yaml:
+        apiVersion: 1
+        datasources:
+          - name: Prometheus
+            uid: prometheus
+            type: prometheus
+            access: proxy
+            url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+            isDefault: true
+            editable: true
+            jsonData:
+              httpMethod: POST
+              prometheusType: Prometheus
+              prometheusVersion: 3.5.0
+              timeInterval: 10s
+    deploymentStrategy:
+      type: Recreate
     grafana.ini:
       server:
         domain: grafana.home.dokocloud.net
         root_url: https://grafana.home.dokocloud.net
+    persistence:
+      enabled: true
+      storageClassName: iscsi
+      accessModes:
+        - ReadWriteOnce
+      size: 10Gi
+      annotations:
+        helm.sh/resource-policy: keep
+    sidecar:
+      dashboards:
+        enabled: true
+        label: grafana_dashboard
+        labelValue: "1"
+        searchNamespace: monitoring
+        defaultFolderName: Infrastructure
+        provider:
+          allowUiUpdates: true
+          folder: Infrastructure
+          folderUid: infrastructure
     service:
       type: ClusterIP
       annotations:

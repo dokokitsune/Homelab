@@ -4,3 +4,14 @@ resources:
   - ./repository.yaml
   - ./release.yaml
   - ./gateway.yaml
+
+configMapGenerator:
+  - name: grafana-dashboards-infrastructure
+    files:
+      - dashboard-immich.json
+      - dashboard-kubernetes-cluster.json
+      - dashboard-truenas.json
+    options:
+      disableNameSuffixHash: true
+      labels:
+        grafana_dashboard: "1"

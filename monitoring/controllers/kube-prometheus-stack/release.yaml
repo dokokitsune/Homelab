@@ -31,6 +31,15 @@ spec:
     prometheus:
       prometheusSpec:
         enableRemoteWriteReceiver: true
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: iscsi
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 20Gi
         podMonitorNamespaceSelector:
           matchLabels:
             podmonitorscrape: "true"

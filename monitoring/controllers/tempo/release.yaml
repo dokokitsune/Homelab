@@ -17,6 +17,9 @@ spec:
   values:
     tempo:
       reportingEnabled: false
+      extraVolumeMounts:
+        - name: storage
+          mountPath: /var/tempo
       receivers:
         otlp:
           protocols:
@@ -24,3 +27,7 @@ spec:
               endpoint: "0.0.0.0:4317"
             http:
               endpoint: "0.0.0.0:4318"
+    extraVolumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: tempo-data

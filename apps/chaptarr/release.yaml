@@ -1,0 +1,51 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: chaptarr
+  namespace: chaptarr
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 5.0.1
+      sourceRef:
+        kind: HelmRepository
+        name: app-template
+        namespace: chaptarr
+      interval: 12h
+  values:
+    controllers:
+      chaptarr:
+        strategy: Recreate
+        containers:
+          app:
+            image:
+              repository: docker.io/chaptarr/chaptarr
+              tag: 0.9.958
+            env:
+              TZ: America/Los_Angeles
+              PUID: "1000"
+              PGID: "1000"
+              UMASK: "002"
+    service:
+      app:
+        controller: chaptarr
+        ports:
+          http:
+            port: 8789
+    persistence:
+      config:
+        type: persistentVolumeClaim
+        accessMode: ReadWriteOnce
+        size: 10Gi
+        storageClass: iscsi
+        retain: true
+        globalMounts:
+          - path: /config
+      media:
+        type: nfs
+        server: 192.168.4.32
+        path: /mnt/Bulk/media
+        globalMounts:
+          - path: /media
