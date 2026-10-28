@@ -3,10 +3,10 @@
 ## Introduction
 This repo contains my configuration of my homelab.
 
-This is a project I do in my spare time to learn and have fun. I have recently graduated college with a Bachelor's degree in Computer Science from Cal State LA. My specialty is Cloud Engineering and Kubernetes. My homelab is a place where I can learn and practice with industry standards in my own home.
+This is a project I work on in my spare time to learn and have fun. I'm a DevOps engineer working with CI/CD, Kubernetes, Flux, and AWS/Azure. My homelab is where I practice industry-standard tooling in my own home.
 
 ## Cluster Architecture
-I use [Talos Linux](https://www.talos.dev/) for each of my nodes. I have a lot of experience in [NixOS](https://nixos.org/), however setting up a complex kubernetes cluster with NixOS instances is cumbersome and Talos offers lightweight, minimal, and provides production grade security right out of the box. Currently I have a 6 node setup with 3 master nodes and 3 worker nodes.
+I use [Talos Linux](https://www.talos.dev/) for each of my nodes. I have a lot of experience in [NixOS](https://nixos.org/), however setting up a complex kubernetes cluster with NixOS instances is cumbersome and Talos offers lightweight, minimal, and provides production grade security right out of the box. Currently I have a 4 node setup with 1 control plane node and 3 worker nodes.
 
 ### Cilium ownership
 
