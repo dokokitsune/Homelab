@@ -16,6 +16,15 @@ spec:
     type: kubernetes
     networkPolicy: true
     domain: cluster.local
+  kustomize:
+    patches:
+      - target:
+          kind: Namespace
+          name: flux-system
+        patch: |
+          - op: add
+            path: /metadata/labels/homelab~1gateway-apps
+            value: "true"
   sync:
     kind: GitRepository
     url: https://github.com/dokokitsune/Homelab.git

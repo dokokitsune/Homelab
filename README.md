@@ -121,6 +121,7 @@ Hostnames currently routed on the `apps` Gateway:
 | `actualbudget.home.dokocloud.net`, `actual.home.dokocloud.net` | `actualbudget` | `actualbudget:5006` |
 | `homepage.home.dokocloud.net` | `homepage` | `homepage:3000` |
 | `grafana.home.dokocloud.net` | `monitoring` | `grafana:80` |
+| `flux.home.dokocloud.net` | `flux-system` | `flux-operator:9080` |
 
 Keep the existing Tailscale exposure during initial rollout. Remove it only after the Gateway resources are programmed, both DNS answers resolve correctly, the wildcard certificate is ready, each application passes an HTTPS request, and the OTLP and Carbon metrics transports have been tested.
 
