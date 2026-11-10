@@ -132,6 +132,31 @@ The cluster is hosted on bare metal across four Dell Wyse 5070 thin clients:
 - Storage: 128 GB SATA
 - Network: 2.5 GbE NIC
 
+### Immich hardware transcoding
+
+The Talos workers include the `i915` system extension and expose `/dev/dri/renderD128`.
+Flux installs Node Feature Discovery and the Intel device plugin operator, which manages
+the GPU plugin on discovered Intel GPU nodes. Each worker advertises five shared
+`gpu.intel.com/i915` allocation slots; these share one physical GPU.
+
+The Immich server requests one slot. Its Helm values enable Intel Quick Sync (`qsv`)
+and hardware decoding through `immich.configuration.ffmpeg`. Configuration files are
+authoritative in Immich, so manage application settings in `apps/immich/release.yaml`;
+the existing disabled version-check preference is preserved there. Machine learning
+continues to use the CPU image.
+
+Jellyfin remains on TrueNAS with its Intel Arc A310. The Wyse integrated GPUs provide
+Immich acceleration independently of that card.
+
+Check discovery and allocation with:
+
+```sh
+kubectl get helmreleases -n inteldeviceplugins-system
+kubectl get daemonsets -n inteldeviceplugins-system
+kubectl get nodes -o 'custom-columns=NAME:.metadata.name,GPU:.status.allocatable.gpu\.intel\.com/i915'
+kubectl exec -n immich deployment/immich-server -- ls -l /dev/dri
+```
+
 
 
 
