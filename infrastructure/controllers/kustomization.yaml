@@ -11,5 +11,5 @@ resources:
   - ./renovate
 #  - ./vault
   - ./cnpg
-#  - ./nfd
-#  - ./intel-device-plugins
+  - ./nfd
+  - ./intel-device-plugins

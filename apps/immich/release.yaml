@@ -42,6 +42,13 @@ spec:
                     name: immich-secret
                     key: DB_DATABASE_NAME
     immich:
+      # File-based configuration is authoritative; manage app settings here.
+      configuration:
+        newVersionCheck:
+          enabled: false
+        ffmpeg:
+          accel: qsv
+          accelDecode: true
       persistence:
         library:
           existingClaim: immich-data
@@ -50,5 +57,14 @@ spec:
 
     server:
       enabled: true
+      controllers:
+        main:
+          containers:
+            main:
+              resources:
+                requests:
+                  gpu.intel.com/i915: 1
+                limits:
+                  gpu.intel.com/i915: 1
     machine-learning:
       enabled: true
